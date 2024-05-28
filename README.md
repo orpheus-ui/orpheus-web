@@ -1,4 +1,4 @@
-# Astro Starter Kit: Basics
+# Orpheus UI Portfolio
 
 ```sh
 npm create astro@latest -- --template basics
