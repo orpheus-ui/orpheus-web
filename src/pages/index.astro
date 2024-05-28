@@ -1,0 +1,119 @@
+---
+// Components
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import Recent from "../components/Recent.astro";
+import Contribution from "../components/Contribution.astro";
+import Socials from "../components/Socials.astro";
+
+const siteTitle =
+  "Expert UI/UX Designer for App, Landing Pages, and Music Apps";
+
+// Images
+import bgLeft from "../assets/images/bg-left-min.png";
+
+// Slides Data
+const slides = [
+  {
+    text: "Relics Of A Mortal Past 1 - NFT",
+    image: () => import('../assets/images/slide-1.png'),
+    url: "#",
+  },
+  {
+    text: "Relics Of A Mortal Past 2 - NFT",
+    image: () => import('../assets/images/slide-2.png'),
+    url: "#",
+  },
+  { text: "Another NFT project", image: () => import('../assets/images/slide-3.png'), url: "#" },
+  {
+    text: "Relics Of A Mortal Past 2 - NFT",
+    image: () => import('../assets/images/slide-4.png'),
+    url: "#",
+  },
+  {
+    text: "Relics Of A Mortal Past 2 - NFT",
+    image: () => import('../assets/images/slide-5.png'),
+    url: "#",
+  },
+];
+---
+
+<Layout title={siteTitle}>
+  <!-- Main Section -->
+  <main>
+    <div
+      class="absolute lg:-top-48 -z-10 -left-0 overflow-hidden pointer-events-none"
+    >
+      <img src={bgLeft.src} />
+    </div>
+
+    <Hero />
+    <Recent {slides} />
+    <div
+      class="absolute lg:top-2/3 -z-10 right-0 rotate-180 overflow-hidden pointer-events-none"
+    >
+      <img src={bgLeft.src} />
+    </div>
+    <Contribution />
+    <Socials />
+  </main>
+</Layout>
+
+<script>
+  // GSAP Animations
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  // GSAP Timeline
+  let tl = gsap.timeline({
+    defaults: {
+      ease: "power4.inOut",
+      duration: 3,
+    },
+  });
+  tl.fromTo(
+    ".heroImg",
+    { x: 200, opacity: 0, duration: 1, delay: 2 },
+    { x: 0, opacity: 1, duration: 1, ease: "power3.out" }
+  )
+    .fromTo(
+      ".heroTitle",
+      { x: -200, opacity: 0, duration: 1.5 },
+      { x: 0, opacity: 1, duration: 1.5, ease: "power3.out" },
+      "-=1.2"
+    )
+    .fromTo(
+      ".heroTxt",
+      { opacity: 0, y: 100, duration: 1 },
+      { opacity: 1, y: 0, duration: 1, ease: "power3.out" },
+      "-=1"
+    )
+    .fromTo(
+      ".heroBtn",
+      { x: -100, opacity: 0, stagger: 1.5, duration: 1 },
+      { x: 0, opacity: 1, stagger: 0.5, duration: 1 },
+      "-=1"
+    );
+
+  // GSAP ScrollTrigger
+  var sections = gsap.utils.toArray(".banner-title");
+  sections.forEach((section) => {
+    gsap.fromTo(
+      section,
+      { opacity: 0.5, filter: "blur(2px)", y: 100 },
+      {
+        opacity: 1,
+        filter: "blur(0px)",
+        y: 0,
+        scrollTrigger: {
+          trigger: section,
+          start: "-=1000",
+          end: "-=800",
+          scrub: 1,
+          toggleActions: "play pause resume reset",
+        },
+      }
+    );
+  });
+</script>

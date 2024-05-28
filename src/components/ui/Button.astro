@@ -1,0 +1,35 @@
+---
+export interface Props {
+  url: string;
+  target?;
+  className?: string;
+  secondary?: boolean;
+}
+const defaultText = "Button";
+const {
+  url,
+  target = "_self",
+  className,
+  secondary = false,
+} = Astro.props as Props;
+---
+
+{
+  secondary ? (
+    <div class={className}>
+      <a
+        href={url}
+        target={target}
+        class="btn-secondary inline-flex gap-1 group"
+      >
+        <slot>{defaultText}</slot>
+      </a>
+    </div>
+  ) : (
+    <div class={className}>
+      <a href={url} target={target} class="btn-primary inline-flex gap-1 group">
+        <slot>{defaultText}</slot>
+      </a>
+    </div>
+  )
+}

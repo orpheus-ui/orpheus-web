@@ -1,0 +1,35 @@
+---
+export interface Props {
+  bgColor?: string;
+  bgImg?: string;
+  bgPos?: string;
+  className?: string;
+}
+
+const { bgColor = "#07090C", bgImg, bgPos, className } = Astro.props as Props;
+
+// Css Settings
+const bgCss = `url("${bgImg}")`;
+---
+
+<div class={className}>
+  <div
+    class="flex items-center justify-center w-full h-[430px] rounded-md banner bg-cover bg-center lg:bg-left lg:bg-contain overflow-hidden"
+  >
+    <slot>
+      <div class="w-auto text-center">
+        <h2 class="text-2xl lg:text-4xl font-bold golden-text">Banner</h2>
+      </div>
+    </slot>
+  </div>
+</div>
+
+<style define:vars={{ bgColor, bgCss, bgPos }}>
+  .banner {
+    background-color: var(--bgColor);
+    background-image: var(--bgCss);
+    background-repeat: no-repeat;
+    background-position: var(--bgPos);
+    background-blend-mode: lighten;
+  }
+</style>

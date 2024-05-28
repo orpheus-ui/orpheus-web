@@ -1,0 +1,77 @@
+---
+// Assets
+import "../assets/global.css";
+
+// Component
+import Navigation from "../components/Nav.astro";
+
+// Background Image
+import bgTopRight from "../assets/images/bg-top-right-min.png";
+
+// Props
+export interface Props {
+  title: string;
+}
+import { SEO } from "astro-seo";
+const { title } = Astro.props as Props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <SEO
+      description="Unlock seamless digital experiences with Raef Orpheus, a distinguished UI/UX designer specializing in crafting captivating apps, landing pages, and music app interfaces. Elevate your digital presence with innovative design solutions and user-centric products."
+      openGraph={{
+        basic: {
+          title: Astro.props.title + " | Raef Orpheus",
+          type: "Website",
+          image:
+            "https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png",
+        },
+      }}
+      twitter={{
+        creator: "@orpheus.ui",
+      }}
+      extend={{
+        // extending the default link tags
+        link: [{ rel: "icon", href: "/favicon.ico" }],
+        // extending the default meta tags
+        meta: [
+          {
+            name: "twitter:image",
+            content:
+              "https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png",
+          },
+          {
+            name: "twitter:title",
+            content: Astro.props.title + " | Raef Orpheus",
+          },
+          {
+            name: "twitter:description",
+            content:
+              "Unlock seamless digital experiences with Raef Orpheus, a distinguished UI/UX designer specializing in crafting captivating apps, landing pages, and music app interfaces. Elevate your digital presence with innovative design solutions and user-centric products.",
+          },
+        ],
+      }}
+    />
+    <title>Raef Orpheus | {title}</title>
+
+  </head>
+  <body>
+    <div class="cursor-follower"></div>
+    <div
+      class="absolute top-0 right-0 overflow-hidden pointer-events-none -z-10"
+    >
+      <img src={bgTopRight.src} />
+    </div>
+    <Navigation />
+    <div class="max-w-8xl mx-auto px-6 lg:px-12 mt-12">
+      <slot />
+    </div>
+    <script src="../assets/global.js"></script>
+  </body>
+</html>

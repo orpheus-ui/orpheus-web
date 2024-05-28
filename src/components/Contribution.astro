@@ -1,0 +1,68 @@
+---
+import Banner from "../components/ui/Banner.astro";
+import Button from "../components/ui/Button.astro";
+import SectionTitle from "../components/ui/SectionTitle.astro";
+
+import Banner1 from "../assets/images/banner-1-min.png";
+import Banner2 from "../assets/images/banner-2-min.png";
+---
+
+<section class="mt-28">
+  <div class="mb-16 items-center flex justify-center">
+    <SectionTitle title="Contribution" linkTitle="More" url="#" />
+  </div>
+  <Banner bgImg={Banner1.src} className="banner">
+    <div
+      class="flex flex-col w-full lg:w-1/2 lg:ml-auto text-center items-center bg-dark/60 py-7 rounded-md backdrop-blur-sm banner-title"
+    >
+      <h2 class="text-2xl lg:text-4xl font-bold golden-text">
+        Figma Community Profile
+      </h2>
+      <p class="text-xl py-6 px-2 tracking-widest">
+        Free open-source Designs and Assets
+      </p>
+      <Button className="w-fit" url="#" target="_blank"
+        >Go to Figma <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+          ></path>
+        </svg>
+      </Button>
+    </div>
+  </Banner>
+  <Banner bgImg={Banner2.src} className="mt-16 banner" bgPos="right">
+    <div
+      class="flex flex-col w-full lg:w-1/2 lg:mr-auto text-center items-center bg-dark/70 py-7 rounded-md backdrop-blur-sm banner-title"
+    >
+      <h2 class="text-2xl lg:text-4xl font-bold golden-text">DryWest Design</h2>
+      <p class="text-xl py-6 px-2 tracking-widest">
+        UI/UX Agency specialized in Audio Software
+      </p>
+      <Button className="w-fit" url="#" target="_blank"
+        >Get it <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+          ></path>
+        </svg>
+      </Button>
+    </div>
+  </Banner>
+</section>

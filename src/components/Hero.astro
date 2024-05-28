@@ -1,0 +1,53 @@
+---
+// Component
+import Button from "../components/ui/Button.astro";
+
+// Heo Image
+import heroImg from "../assets/images/hero2-min.png";
+---
+
+<section class="flex flex-col-reverse item-center mt-12 lg:flex-row">
+  <div class="w-full space-y-8 lg:w-1/2 lg:my-auto sm:mt-6">
+    <h2
+      class="text-gold-300 text-center lg:leading-[5rem] lg:text-start text-[calc(100%_+_7vw)] md:text-[calc(100%_+_5vw)] lg:text-[calc(100%_+_1.2vw)] xl:text-[calc(100%_+_1.8vw)] font-cinzel golden-text heroTitle"
+    >
+      Yet the story of <span
+        class="tracking-wide text-[calc(100%_+_2.1vw)] font-bold"
+        >Orpheus
+      </span>
+    </h2>
+    <p
+      class="mx-auto text-center lg:text-start lg:w-auto text-[calc(100%_+_0.25vw)] leading-relaxed tracking-widest font-light heroTxt"
+    >
+      UX/UI Designer, with experience in delivering end-to-end design for
+      software products, WebApps, Audio Apps & Plugins ...
+    </p>
+    <div class="flex gap-6 flex-wrap heroTxt">
+      <Button url="#" className="flex-auto w-full sm:w-auto heroBtn" secondary>
+        Works <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="ml-1 w-6 group-hover:motion-safe:animate-pulse"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"
+          ></path>
+        </svg>
+      </Button>
+      <Button url="#" className="flex-auto w-full sm:w-auto heroBtn"
+        >Free Stuff</Button
+      >
+    </div>
+  </div>
+  <!-- Hero Image -->
+  <div
+    class="pointer-events-none select-none relative right-3 lg:right-0 heroImg"
+  >
+    <img src={heroImg.src} alt="Orpheus Hero" />
+  </div>
+</section>

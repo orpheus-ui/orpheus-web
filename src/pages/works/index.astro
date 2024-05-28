@@ -1,0 +1,31 @@
+---
+import Layout from "../../layouts/Layout.astro";
+const posts = await Astro.glob("./*.md");
+---
+
+<Layout title="Orpheus - Works">
+  <div class="flex flex-col justify-start items-center gap-y-4">
+    <h1 class="text-center text-8xl golden-text font-bold">Works</h1>
+    <div class="flex justify-center items-center gap-x-4 capitalize">
+      <a href="/" class="text-lg text-gold-200">Home</a>
+      <div
+        class="block relative w-3 h-3 bg-gradient-to-br from-gold-300 to-gold-200 rounded-full"
+      >
+      </div>
+      <p class="text-lg text-[#3e5069]">
+        {Astro.url.pathname.slice(1)}
+      </p>
+    </div>
+  </div>
+  <div>
+    {
+      posts.slice(0, 4).map((post) => (
+        <article>
+          <h2>{post.frontmatter.title}</h2>
+          <p>{post.frontmatter.description}</p>
+          <a href={post.url}>Read more</a>
+        </article>
+      ))
+    }
+  </div>
+</Layout>
