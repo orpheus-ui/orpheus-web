@@ -34,7 +34,6 @@ window.addEventListener("mousemove", (e) => {
   root.style.setProperty("--mouse-y", mouse.y + "px");
 });
 
-
 /* --------------------------
  * TICKER
  * -------------------------- */
