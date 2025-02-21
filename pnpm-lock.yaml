@@ -11,6 +11,12 @@ importers:
       '@astrojs/tailwind':
         specifier: ^5.0.3
         version: 5.1.5(astro@4.16.18(rollup@4.34.8)(typescript@5.7.3))(tailwindcss@3.4.17)
+      '@fontsource/cinzel':
+        specifier: ^5.1.1
+        version: 5.1.1
+      '@fontsource/montserrat':
+        specifier: ^5.1.1
+        version: 5.1.1
       '@glidejs/glide':
         specifier: ^3.6.0
         version: 3.7.1
@@ -329,6 +335,12 @@ packages:
     engines: {node: '>=12'}
     cpu: [x64]
     os: [win32]
+
+  '@fontsource/cinzel@5.1.1':
+    resolution: {integrity: sha512-PXfexnCrM0+hAepIdcr1sIEjlC4xxDuH03ftW91LreszM6A1C0ipm/c+0s2yVTXJh+I3m6ZnPsQFazqLMuTmfQ==}
+
+  '@fontsource/montserrat@5.1.1':
+    resolution: {integrity: sha512-myTQCo0XWf5AXc3Pm5GFFTstueYTacE+gpL3G8Vf5ELpr/rBfW+zr7dKLPYXlq2r21HHwfyw6yueKWccWUtKBA==}
 
   '@glidejs/glide@3.7.1':
     resolution: {integrity: sha512-8he0pZpLSqTesSFYiuWdhBmtdlYSPWxfPUCKtkkiX6ZmT8UdMdmoFPtJaOwLBXv4p2JiGxqbuPdiRGGo2e/htQ==}
@@ -2431,6 +2443,10 @@ snapshots:
 
   '@esbuild/win32-x64@0.21.5':
     optional: true
+
+  '@fontsource/cinzel@5.1.1': {}
+
+  '@fontsource/montserrat@5.1.1': {}
 
   '@glidejs/glide@3.7.1': {}
 

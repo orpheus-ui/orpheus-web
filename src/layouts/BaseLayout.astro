@@ -1,5 +1,11 @@
 ---
 // BaseLayout.astro
+import "@fontsource/cinzel/500.css";
+import "@fontsource/cinzel/800.css";
+import "@fontsource/montserrat/200.css";
+import "@fontsource/montserrat/300.css";
+import "@fontsource/montserrat/400.css";
+import "@fontsource/montserrat/500.css";
 import "../assets/css/global.css";
 import Navigation from "../components/Nav.astro";
 import { SEO } from "astro-seo";
@@ -10,6 +16,13 @@ const { title, layoutType = "default", seoDescription, seoImage } = Astro.props;
 <!doctype html>
 <html lang="en">
     <head>
+        <link
+            rel="preload"
+            as="image"
+            href="/images/optimized/bg-top-right-min.webp"
+            fetchpriority="high"
+        />
+
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
@@ -54,7 +67,12 @@ const { title, layoutType = "default", seoDescription, seoImage } = Astro.props;
         <div
             class="absolute top-0 right-0 overflow-hidden pointer-events-none -z-10"
         >
-            <img src="/images/optimized/bg-top-right-min.webp" />
+            <img
+                src="/images/optimized/bg-top-right-min.webp"
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
+            />
         </div>
         <Navigation />
         <slot />
