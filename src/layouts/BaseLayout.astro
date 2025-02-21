@@ -89,8 +89,35 @@ const { title, layoutType = "default", seoDescription, seoImage } = Astro.props;
     <body data-layout={layoutType}>
         {layoutType === "default" && <div class="cursor-follower" />}
         <div
-            class="absolute top-0 right-0 w-[1000px] overflow-hidden pointer-events-none -z-10 bg-hero"
+            class="absolute top-0 right-0 overflow-hidden pointer-events-none -z-10 bg-placeholder"
         >
+            <picture>
+                <!-- Larger screens -->
+                <source
+                    media="(min-width: 1024px)"
+                    srcset="/images/optimized/bg-top-right-min.webp"
+                    width="1001"
+                    height="1162"
+                />
+                <!-- Medium screens -->
+                <source
+                    media="(min-width: 768px)"
+                    srcset="/images/optimized/bg-top-right-min.webp"
+                    width="800"
+                    height="864"
+                />
+                <!-- Base image -->
+                <img
+                    src="/images/optimized/bg-top-right-min.webp"
+                    width="600"
+                    height="648"
+                    alt=""
+                    loading="eager"
+                    fetchpriority="high"
+                    decoding="async"
+                    class="w-full h-full object-cover"
+                />
+            </picture>
         </div>
         <Navigation />
         <slot />
