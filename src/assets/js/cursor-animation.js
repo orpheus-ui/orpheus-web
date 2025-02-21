@@ -17,7 +17,7 @@ export function initCursor() {
 
   let pos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
   let mouse = { x: pos.x, y: pos.y };
-  let speed = 0.1;
+  let speed = 0.08;
   let fpms = 60 / 280;
 
   let xSet = gsap.quickSetter(cursorFollower, "x", "px");

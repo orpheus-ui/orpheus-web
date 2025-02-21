@@ -1,0 +1,72 @@
+---
+// BaseLayout.astro
+import "../assets/css/global.css";
+import Navigation from "../components/Nav.astro";
+// Background Image
+import bgTopRight from "public/images/bg-top-right-min.png";
+import { SEO } from "astro-seo";
+
+const { title, layoutType = "default", seoDescription, seoImage } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <SEO
+            description="Unlock seamless digital experiences with Raef Orpheus, a distinguished UI/UX designer specializing in crafting captivating apps, landing pages, and music app interfaces. Elevate your digital presence with innovative design solutions and user-centric products."
+            openGraph={{
+                basic: {
+                    title: Astro.props.title + " | Raef Orpheus",
+                    type: "website",
+                    image: "public/images/hero2-min.png",
+                },
+            }}
+            twitter={{
+                creator: "@orpheus.ui",
+            }}
+            extend={{
+                // extending the default link tags
+                // link: [{ rel: "icon", href: "/favicon.ico" }],
+                // extending the default meta tags
+                meta: [
+                    {
+                        name: "twitter:image",
+                        content: "public/images/hero2-min.png",
+                    },
+                    {
+                        name: "twitter:title",
+                        content: Astro.props.title + " | Raef Orpheus",
+                    },
+                    {
+                        name: "twitter:description",
+                        content:
+                            "Unlock seamless digital experiences with Raef Orpheus, a distinguished UI/UX designer specializing in crafting captivating apps, landing pages, and music app interfaces. Elevate your digital presence with innovative design solutions and user-centric products.",
+                    },
+                ],
+            }}
+        />
+        <!-- Add your SEO props here -->
+        <title>{title}</title>
+    </head>
+    <body data-layout={layoutType}>
+        {layoutType === "default" && <div class="cursor-follower" />}
+        <div
+            class="absolute top-0 right-0 overflow-hidden pointer-events-none -z-10"
+        >
+            <img src={bgTopRight.src} />
+        </div>
+        <Navigation />
+        <slot />
+
+        <script>
+            import { initAllAnimations } from "../assets/js/animations.js";
+
+            window.addEventListener("load", () => {
+                initAllAnimations();
+            });
+        </script>
+    </body>
+</html>

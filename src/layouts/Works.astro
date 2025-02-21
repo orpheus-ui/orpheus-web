@@ -1,47 +1,31 @@
 ---
-import "../assets/css/global.css";
-import Navigation from "../components/Nav.astro";
+import BaseLayout from "./BaseLayout.astro";
+
 const { frontmatter } = Astro.props;
-const bgTop = "/images/bg-top-right-min.png";
 ---
 
-<!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width" />
-        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-        <meta name="generator" content={Astro.generator} />
-        <title>{frontmatter.title}</title>
-    </head>
-    <body>
-        <div
-            class="absolute top-0 right-0 overflow-hidden pointer-events-none -z-10"
-        >
-            <img src={bgTop} />
-        </div>
-        <Navigation />
-        <main class="max-w-8xl mx-auto px-6 lg:px-4 mt-6">
-            <article>
-                <h1
-                    class="text-5xl text-center font-bold py-3 golden-text leading-snug"
-                >
-                    {frontmatter.title}
-                </h1>
-                <span class="flex mx-auto divider-horizontal my-4"></span>
-                <slot />
-            </article>
-        </main>
-        <style is:global>
-            h1,
-            h2,
-            h3,
-            h4 {
-                @apply text-4xl;
-            }
-            p {
-                @apply text-lg leading-loose;
-            }
-        </style>
-    </body>
-</html>
+<BaseLayout title={frontmatter.title} layoutType="works">
+    <main class="max-w-8xl mx-auto px-6 lg:px-4 mt-6">
+        <article>
+            <h1
+                class="text-5xl text-center font-bold py-3 golden-text leading-snug"
+            >
+                {frontmatter.title}
+            </h1>
+            <span class="flex mx-auto divider-horizontal my-4"></span>
+            <slot />
+        </article>
+    </main>
+
+    <style is:global>
+        h1,
+        h2,
+        h3,
+        h4 {
+            @apply text-4xl;
+        }
+        p {
+            @apply text-lg leading-loose;
+        }
+    </style>
+</BaseLayout>
