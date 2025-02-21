@@ -89,7 +89,7 @@ const { title, layoutType = "default", seoDescription, seoImage } = Astro.props;
     <body data-layout={layoutType}>
         {layoutType === "default" && <div class="cursor-follower" />}
         <div
-            class="absolute top-0 right-0 overflow-hidden pointer-events-none -z-10 bg-hero"
+            class="absolute top-0 right-0 w-[1000px] overflow-hidden pointer-events-none -z-10 bg-hero"
         >
         </div>
         <Navigation />
