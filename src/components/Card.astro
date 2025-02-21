@@ -1,25 +1,27 @@
 ---
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
+import { string } from "astro:schema";
 export interface Props {
-  image;
-  text: string;
-  url: string;
+    image: string;
+    text: string;
+    url: string;
 }
 const { image, text, url } = Astro.props as Props;
-
 ---
 
 <div class="h-full p-[2px] mx-auto my-auto golden-border rounded-sm">
-  <a href={url}>
-    <div class="bg-dark relative h-full card-image">
-      <Image
-        src={image}
-        alt={text}
-        class:list="object-contain pointer-events-none select-none overflow-hidden"
-      />
-      <div class="absolute bottom-0 p-4 bg-dark/40 backdrop-blur-md w-full">
-        <h3 class="text-md uppercase">{text}</h3>
-      </div>
-    </div>
-  </a>
+    <a href={url}>
+        <div class="bg-dark relative h-full card-image">
+            <img
+                src={image}
+                alt={text}
+                class:list="object-contain pointer-events-none select-none overflow-hidden"
+            />
+            <div
+                class="absolute bottom-0 p-4 bg-dark/40 backdrop-blur-md w-full"
+            >
+                <h3 class="text-md uppercase">{text}</h3>
+            </div>
+        </div>
+    </a>
 </div>

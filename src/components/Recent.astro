@@ -4,104 +4,108 @@ const { slides } = Astro.props;
 ---
 
 <section class="mt-28">
-  <div class="mb-12">
-    <div class="flex flex-col-reverse lg:flex-row items-center">
-      <div class="arrows w-full flex justify-between lg:w-fit lg:block">
-        <button
-          id="go-prev"
-          class="opacity-40 hover:opacity-100 transition-opacity ease-out"
-          ><svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="w-6 h-6"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M15.75 19.5L8.25 12l7.5-7.5"></path>
-          </svg>
-        </button>
-        <button
-          id="go-next"
-          class="ml-3 opacity-40 hover:opacity-100 transition-opacity ease-out"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="w-6 h-6"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M8.25 4.5l7.5 7.5-7.5 7.5"></path>
-          </svg>
-        </button>
-      </div>
-      <div
-        class="uppercase flex items-center w-fit mb-10 lg:mb-0 lg:ml-auto lg:mr-0"
-      >
-        <h3 class="text-xl font-extrabold golden-text tracking-wider">
-          Recent Works
-        </h3>
-        <div class="divider-vertical mx-4"></div>
-        <a
-          href="/works"
-          class="text-sm hover:text-gold-300 transition-colors ease-out"
-          >More
-        </a>
-      </div>
-    </div>
-  </div>
-  <div class="w-full">
-    <div class="glide">
-      <div class="glide__track" data-glide-el="track">
-        <div class="glide__slides">
-          {
-            slides.map((slide) => (
-              <Card text={slide.text} image={slide.image()} url={slide.url} />
-            ))
-          }
+    <div class="mb-12">
+        <div class="flex flex-col-reverse lg:flex-row items-center">
+            <div class="arrows w-full flex justify-between lg:w-fit lg:block">
+                <button
+                    id="go-prev"
+                    class="opacity-40 hover:opacity-100 transition-opacity ease-out"
+                    ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M15.75 19.5L8.25 12l7.5-7.5"></path>
+                    </svg>
+                </button>
+                <button
+                    id="go-next"
+                    class="ml-3 opacity-40 hover:opacity-100 transition-opacity ease-out"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M8.25 4.5l7.5 7.5-7.5 7.5"></path>
+                    </svg>
+                </button>
+            </div>
+            <div
+                class="uppercase flex items-center w-fit mb-10 lg:mb-0 lg:ml-auto lg:mr-0"
+            >
+                <h3 class="text-xl font-extrabold golden-text tracking-wider">
+                    Recent Works
+                </h3>
+                <div class="divider-vertical mx-4"></div>
+                <a
+                    href="/works"
+                    class="text-sm hover:text-gold-300 transition-colors ease-out"
+                    >More
+                </a>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
+    <div class="w-full">
+        <div class="glide">
+            <div class="glide__track" data-glide-el="track">
+                <div class="glide__slides">
+                    {
+                        slides.map((slide) => (
+                            <Card
+                                text={slide.text}
+                                image={slide.image}
+                                url={slide.url}
+                            />
+                        ))
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
 <script>
-  import Glide from "@glidejs/glide";
-  let glide = new Glide(".glide", {
-    type: "carousel",
-    perView: 3,
-    focusAt: "center",
-    gap: 20,
-    keyboard: true,
-    autoplay: 4000,
-    breakpoints: {
-      1200: {
-        perView: 2,
-      },
-      800: {
-        perView: 1,
-      },
-    },
-  });
-  glide.mount();
+    import Glide from "@glidejs/glide";
+    let glide = new Glide(".glide", {
+        type: "carousel",
+        perView: 3,
+        focusAt: "center",
+        gap: 20,
+        keyboard: true,
+        autoplay: 4000,
+        breakpoints: {
+            1200: {
+                perView: 2,
+            },
+            800: {
+                perView: 1,
+            },
+        },
+    });
+    glide.mount();
 
-  let goBackward = document.querySelector("#go-prev");
-  let goForward = document.querySelector("#go-next");
+    let goBackward = document.querySelector("#go-prev");
+    let goForward = document.querySelector("#go-next");
 
-  // @ts-ignore
-  goBackward.addEventListener("click", () => {
-    glide.go("<");
-  });
-  // @ts-ignore
-  goForward.addEventListener("click", () => {
-    glide.go(">");
-  });
+    // @ts-ignore
+    goBackward.addEventListener("click", () => {
+        glide.go("<");
+    });
+    // @ts-ignore
+    goForward.addEventListener("click", () => {
+        glide.go(">");
+    });
 </script>
