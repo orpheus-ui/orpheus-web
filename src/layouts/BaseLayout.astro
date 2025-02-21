@@ -3,7 +3,7 @@
 import "../assets/css/global.css";
 import Navigation from "../components/Nav.astro";
 // Background Image
-import bgTopRight from "public/images/bg-top-right-min.png";
+import bgTopRight from "public/images/optimized/bg-top-right-min.webp";
 import { SEO } from "astro-seo";
 
 const { title, layoutType = "default", seoDescription, seoImage } = Astro.props;
@@ -21,7 +21,7 @@ const { title, layoutType = "default", seoDescription, seoImage } = Astro.props;
                 basic: {
                     title: Astro.props.title + " | Raef Orpheus",
                     type: "website",
-                    image: "public/images/hero2-min.png",
+                    image: "public/images/optimized/hero2-min.webp",
                 },
             }}
             twitter={{
@@ -34,7 +34,7 @@ const { title, layoutType = "default", seoDescription, seoImage } = Astro.props;
                 meta: [
                     {
                         name: "twitter:image",
-                        content: "public/images/hero2-min.png",
+                        content: "public/images/optimized/hero2-min.webp",
                     },
                     {
                         name: "twitter:title",

@@ -1,12 +1,12 @@
 # Orpheus - Interactive Storytelling Portfolio
 
-![Orpheus Preview](./public/images/preview.png)
+![Orpheus Preview](./public/images/optimized/preview.webp)
 
 A modern, interactive portfolio website that brings the ancient tale of Orpheus to life through engaging animations and responsive design.
 
 ## 🌟 Features
 
-- Interactive storytelling experience
+- Beautifully crafted portfolio
 - Smooth scroll animations
 - Responsive typography and layout
 - Custom cursor animations
