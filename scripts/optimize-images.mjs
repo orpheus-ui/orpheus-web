@@ -25,7 +25,7 @@ async function optimizeImages() {
             withoutEnlargement: true,
             fit: "inside",
           })
-          .webp({ quality: 90 }) // convert to WebP with 80% quality
+          .webp({ quality: 80 }) // convert to WebP with 80% quality
           .toFile(outputPath);
 
         console.log(`Optimized: ${file} -> ${outputName}`);
