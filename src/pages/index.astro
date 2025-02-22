@@ -61,45 +61,70 @@ const slides = [
 </Layout>
 
 <script>
-    // GSAP Animations
     import { gsap } from "gsap";
     import { ScrollTrigger } from "gsap/ScrollTrigger";
     gsap.registerPlugin(ScrollTrigger);
 
-    // GSAP Timeline
-    let tl = gsap.timeline({
-        defaults: {
-            ease: "power4.inOut",
-            duration: 3,
-        },
-    });
-    tl.fromTo(
-        ".heroImg",
-        { x: 200, opacity: 0, duration: 1, delay: 2 },
-        { x: 0, opacity: 1, duration: 1, ease: "power3.out" },
-    )
-        .fromTo(
-            ".heroTitle",
-            { x: -200, opacity: 0, duration: 1.5 },
-            { x: 0, opacity: 1, duration: 1.5, ease: "power3.out" },
-            "-=1.2",
-        )
-        .fromTo(
-            ".heroTxt",
-            { opacity: 0, y: 100, duration: 1 },
-            { opacity: 1, y: 0, duration: 1, ease: "power3.out" },
-            "-=1",
-        )
-        .fromTo(
-            ".heroBtn",
-            { x: -100, opacity: 0, stagger: 1.5, duration: 1 },
-            { x: 0, opacity: 1, stagger: 0.5, duration: 1 },
-            "-=1",
-        );
+    const mm = gsap.matchMedia();
 
-    // GSAP ScrollTrigger
-    var sections = gsap.utils.toArray(".banner-title");
-    sections.forEach((section) => {
+    // Desktop Animations (above 1024px)
+    mm.add("(min-width: 1024px)", () => {
+        // Your original animation
+        let tl = gsap.timeline({
+            defaults: {
+                ease: "power4.inOut",
+                duration: 3,
+            },
+        });
+        tl.fromTo(
+            ".heroImg",
+            { x: 200, opacity: 0, duration: 1, delay: 2 },
+            { x: 0, opacity: 1, duration: 1, ease: "power3.out" },
+        )
+            .fromTo(
+                ".heroTitle",
+                { x: -200, opacity: 0, duration: 1.5 },
+                { x: 0, opacity: 1, duration: 1.5, ease: "power3.out" },
+                "-=1.2",
+            )
+            .fromTo(
+                ".heroTxt",
+                { opacity: 0, y: 100, duration: 1 },
+                { opacity: 1, y: 0, duration: 1, ease: "power3.out" },
+                "-=1",
+            )
+            .fromTo(
+                ".heroBtn",
+                { x: -100, opacity: 0, stagger: 1.5, duration: 1 },
+                { x: 0, opacity: 1, stagger: 0.5, duration: 1 },
+                "-=1",
+            );
+    });
+
+    // Mobile Animations (below 1024px) - simpler fade animations
+    mm.add("(max-width: 1023px)", () => {
+        let tl = gsap.timeline({
+            defaults: {
+                ease: "power4.inOut",
+                duration: 1.5,
+            },
+        });
+        tl.fromTo(".heroImg", { opacity: 0 }, { opacity: 1 })
+            .fromTo(".heroTitle", { opacity: 0 }, { opacity: 1 }, "-=1")
+            .fromTo(".heroTxt", { opacity: 0 }, { opacity: 1 }, "-=1")
+            .fromTo(
+                ".heroBtn",
+                { opacity: 0 },
+                {
+                    opacity: 1,
+                    stagger: 0.2,
+                },
+                "-=1",
+            );
+    });
+
+    // ScrollTrigger animations remain the same
+    gsap.utils.toArray(".banner-title").forEach((section) => {
         gsap.fromTo(
             section,
             { opacity: 0.5, filter: "blur(2px)", y: 100 },
