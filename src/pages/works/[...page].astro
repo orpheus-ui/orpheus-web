@@ -51,26 +51,26 @@ const { page, allCategories } = Astro.props as Props;
         </div>
 
         <!-- Works Stack -->
-        <div class="space-y-12">
+        <div class="space-y-6">
             {
                 page.data?.map((work) => (
                     <Banner
                         bgImg={work.data.coverImage}
-                        className="banner"
+                        className="banner min-h-[400px] lg:min-h-0 flex lg:block flex-col justify-end"
                         bgPos="right"
                     >
-                        <div class="flex flex-col w-full lg:w-1/2 lg:mr-auto p-16 banner-title">
-                            <h2 class="text-2xl lg:text-4xl font-bold golden-text">
+                        <div class="flex flex-col w-full lg:w-1/2 lg:mr-auto p-4 lg:p-24 md:p-6 bg-dark/40 backdrop-blur-lg banner-title mt-auto lg:mt-0">
+                            <h2 class="text-xl lg:text-4xl font-bold golden-text">
                                 {work.data.title}
                             </h2>
-                            <p class="text-xl py-6 tracking-widest">
+                            <p class="text-sm lg:text-xl py-4 lg:py-6 tracking-widest">
                                 {work.data.description}
                             </p>
                             <Button
                                 className="w-fit"
                                 url={`/works/${work.slug}`}
                             >
-                                View Project
+                                <span class="text-sm lg:text-xl">Project</span>
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     class="h-6 w-6"
