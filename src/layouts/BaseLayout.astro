@@ -87,7 +87,11 @@ const { title, layoutType = "default", seoDescription, seoImage } = Astro.props;
         <title>{title}</title>
     </head>
     <body data-layout={layoutType}>
-        {layoutType === "default" && <div class="cursor-follower" />}
+        {
+            layoutType === "default" && (
+                <div class="cursor-follower sm:display-none" />
+            )
+        }
         <div
             class="absolute top-0 right-0 overflow-hidden pointer-events-none -z-10 bg-placeholder"
         >
