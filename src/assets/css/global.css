@@ -252,4 +252,7 @@ svg {
     border: 1px rgb(226 183 102 / 65%) solid;
     mix-blend-mode: difference;
     opacity: 0;
+    @media (max-width: 768px), (hover: none) {
+        display: none !important; /* Added !important to override any GSAP styles */
+    }
 }

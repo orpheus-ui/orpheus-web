@@ -2,10 +2,13 @@
 import { gsap } from "./gsap-config";
 
 export function initCursor() {
+  // Check for touch devices FIRST
+  if (window.matchMedia("(hover: none)").matches) return;
+
   const root = document.documentElement;
   const cursorFollower = document.querySelector(".cursor-follower");
 
-  // Set initial state
+  // Rest of your code...
   gsap.set(".cursor-follower", {
     scale: 1,
     opacity: 1,
@@ -23,7 +26,6 @@ export function initCursor() {
   let xSet = gsap.quickSetter(cursorFollower, "x", "px");
   let ySet = gsap.quickSetter(cursorFollower, "y", "px");
 
-  // Use window instead of document for mouse tracking
   window.addEventListener("mousemove", (e) => {
     mouse.x = e.x;
     mouse.y = e.y;
@@ -41,7 +43,6 @@ export function initCursor() {
     ySet(pos.y);
   });
 
-  // Button hover effects
   const menuButton = document.querySelectorAll("a");
   menuButton.forEach(function (btn) {
     btn.addEventListener("mouseover", (e) => {
