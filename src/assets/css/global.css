@@ -9,11 +9,13 @@
     user-select: none; /* Standard syntax */
     --mouse-x: 0px;
     --mouse-y: 0px;
+    overflow-x: clip;
+    margin-right: calc(-1 * (100vw - 100%));
 }
 
 body {
     @apply block font-default antialiased bg-dark text-white selection:bg-gold-200 selection:text-dark underline-offset-8;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
 }
 svg {
     pointer-events: none;
