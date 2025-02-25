@@ -77,21 +77,20 @@ svg {
 }
 
 .btn-secondary {
-    @apply relative w-full justify-center py-4 px-8 text-lg tracking-widest uppercase rounded-sm font-medium;
+    @apply relative justify-center py-[11px] px-6 text-lg tracking-widest uppercase rounded-sm font-medium;
     color: rgba(191, 132, 26, 1);
     border-style: solid;
-    border-image: linear-gradient(20deg, red, blue) 1;
     background:
-        linear-gradient(rgba(5, 6, 7, 1), rgba(5, 6, 7, 1)) padding-box,
+        linear-gradient(rgba(5, 6, 7, 0.8), rgb(8 15 22)) padding-box,
         radial-gradient(
                 at 0 20%,
                 rgba(255, 225, 149, 1) 0%,
                 rgba(242, 187, 90, 0.88) 10%,
                 rgba(191, 122, 0, 0.75) 30%,
-                rgba(191, 122, 0, 0) 75%
+                rgb(143 168 255 / 10%) 75%
             )
             border-box;
-    border: 1px solid transparent;
+    border: 1.5px solid transparent;
     transition: all 250ms ease-out;
 }
 .btn-secondary:hover {
@@ -102,7 +101,7 @@ svg {
 }
 
 .btn-primary {
-    @apply relative w-full justify-center text-dark py-4 px-8 text-lg tracking-widest uppercase rounded-sm font-medium;
+    @apply relative justify-center text-dark py-3 px-6 text-lg tracking-widest uppercase rounded-sm font-medium;
     background: linear-gradient(
         to top right,
         theme("colors.gold.300"),

@@ -6,31 +6,39 @@ import Button from "../components/ui/Button.astro";
 import heroImg from "public/images/optimized/hero2-min.webp";
 ---
 
-<section class="flex flex-col-reverse item-center mt-12 lg:flex-row">
-    <div class="w-full space-y-8 lg:w-1/2 lg:my-auto sm:mt-6">
+<section class="flex flex-col-reverse item-center mt-12 lg:flex-row gap-y-6">
+    <div class="w-full space-y-8 lg:w-1/2 lg:my-auto">
         <h2
-            class="text-gold-300 text-center lg:leading-[5rem] lg:text-start text-[calc(100%_+_7vw)] md:text-[calc(100%_+_5vw)] lg:text-[calc(100%_+_1.2vw)] xl:text-[calc(100%_+_1.8vw)] font-cinzel golden-text heroTitle"
+            class="text-gold-300 text-center lg:leading-[5rem] lg:text-start font-cinzel golden-text heroTitle opacity-0"
         >
-            Yet the story of <span
-                class="tracking-wide text-[calc(100%_+_2.1vw)] font-bold"
-                >Orpheus
+            <span
+                class="text-nowrap"
+                style="font-size: clamp(1.5rem, 4vw, 3.2rem);"
+            >
+                Yet the story of
+            </span>
+            <span
+                class="tracking-wide font-bold text-nowrap block"
+                style="font-size: clamp(3.5rem, 8vw, 5.6rem); white-space: nowrap;"
+            >
+                Orpheus
             </span>
         </h2>
         <p
-            class="mx-auto text-center lg:text-start lg:w-auto text-[calc(100%_+_0.25vw)] leading-relaxed tracking-widest font-light heroTxt"
+            class="mx-auto text-center lg:text-start lg:w-auto text-[calc(100%_+_0.25vw)] leading-relaxed tracking-widest font-light heroTxt opacity-0"
         >
             UX/UI Designer, with experience in delivering end-to-end design for
             software products, WebApps, Audio Apps & Plugins ...
         </p>
         <div class="flex gap-6 flex-wrap heroTxt">
-            <Button url="#" className="sm:w-auto heroBtn" secondary>
+            <Button url="#" className="sm:w-auto heroBtn opacity-0" secondary>
                 Works <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke-width="1.5"
                     stroke="currentColor"
-                    class="ml-1 w-6 group-hover:motion-safe:animate-pulse"
+                    class="ml-1 w-5 group-hover:motion-safe:animate-pulse"
                 >
                     <path
                         stroke-linecap="round"
@@ -39,7 +47,9 @@ import heroImg from "public/images/optimized/hero2-min.webp";
                     ></path>
                 </svg>
             </Button>
-            <Button url="#" className="sm:w-auto heroBtn">Free Stuff</Button>
+            <Button url="#" className="sm:w-auto heroBtn opacity-0"
+                >Free Stuff</Button
+            >
         </div>
     </div>
     <!-- Hero Image -->
@@ -51,7 +61,7 @@ import heroImg from "public/images/optimized/hero2-min.webp";
             width="1286"
             height="1052"
             alt="Orpheus Hero"
-            class="pointer-events-none select-none relative right-3 lg:right-0 heroImg"
+            class="pointer-events-none select-none relative right-3 lg:right-0 heroImg opacity-0"
         />
     </div>
 </section>

@@ -17,7 +17,7 @@ export function initHeroAnimations() {
     .fromTo(
       ".heroTitle",
       { x: -200, opacity: 0, duration: 1.5 },
-      { x: 0, opacity: 1, duration: 1.5, ease: "power3.out" },
+      { x: 0, opacity: 1, duration: 1.5, delay: 0.5, ease: "power3.out" },
       "-=1.2",
     )
     .fromTo(
