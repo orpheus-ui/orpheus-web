@@ -17,7 +17,7 @@ export function initHeroAnimations() {
       scale: 1,
       duration: 1.2,
       ease: "power3.out",
-      delay: 0.5,
+      delay: 0.2,
     },
   )
     // Animate hero title with a subtle rotation for extra flair
@@ -44,7 +44,15 @@ export function initHeroAnimations() {
 }
 
 export function initScrollAnimations() {
-  var sections = gsap.utils.toArray(".banner-title");
+  // Respect users who prefer reduced motion
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    gsap.utils.toArray(".banner-title").forEach((section) => {
+      gsap.set(section, { opacity: 1, filter: "blur(0px)", y: 0 });
+    });
+    return;
+  }
+
+  const sections = gsap.utils.toArray(".banner-title");
   sections.forEach((section) => {
     gsap.fromTo(
       section,
@@ -53,14 +61,43 @@ export function initScrollAnimations() {
         opacity: 1,
         filter: "blur(0px)",
         y: 0,
+        ease: "power2.out",
         scrollTrigger: {
           trigger: section,
-          start: "-=1000",
-          end: "-=800",
-          scrub: 1,
-          toggleActions: "play pause resume reset",
+          start: "top 80%", // when the top of the element is at 80% of the viewport height
+          end: "top 60%", // when the top of the element is at 60% of the viewport height
+          scrub: 1, // smoothly animates the effect as you scroll
+          toggleActions: "play none none reverse", // plays on entering and reverses on leaving
         },
       },
     );
   });
+}
+
+export function animateButtonGradient() {
+  const tl = gsap.timeline({
+    repeat: -1,
+    defaults: { ease: "none" }, // Shorter duration per segment
+  });
+
+  tl.to(".btn-secondary", {
+    "--gradient-pos-x": "100%",
+    "--gradient-pos-y": "0%",
+    duration: 2,
+  })
+    .to(".btn-secondary", {
+      "--gradient-pos-x": "100%",
+      "--gradient-pos-y": "100%",
+      duration: 0.7,
+    })
+    .to(".btn-secondary", {
+      "--gradient-pos-x": "0%",
+      "--gradient-pos-y": "100%",
+      duration: 2,
+    })
+    .to(".btn-secondary", {
+      "--gradient-pos-x": "0%",
+      "--gradient-pos-y": "0%",
+      duration: 0.7,
+    });
 }

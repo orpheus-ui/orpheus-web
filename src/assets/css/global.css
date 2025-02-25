@@ -77,21 +77,39 @@ svg {
 }
 
 .btn-secondary {
-    @apply relative justify-center py-[11px] px-6 text-lg tracking-widest uppercase rounded-sm font-medium;
-    color: rgba(191, 132, 26, 1);
-    border-style: solid;
-    background:
-        linear-gradient(rgba(5, 6, 7, 0.8), rgb(8 15 22)) padding-box,
-        radial-gradient(
-                at 0 20%,
-                rgba(255, 225, 149, 1) 0%,
-                rgba(242, 187, 90, 0.88) 10%,
-                rgba(191, 122, 0, 0.75) 30%,
-                rgb(143 168 255 / 10%) 75%
-            )
-            border-box;
-    border: 1.5px solid transparent;
+    --gradient-pos-x: 0%;
+    --gradient-pos-y: 0%;
+
+    @apply relative justify-center py-3 px-8 text-lg tracking-widest uppercase rounded-sm font-medium;
+    color: rgb(157 167 189);
+    background: transparent; /* Button background is transparent */
+    border: none; /* Remove default border */
+    position: relative;
     transition: all 250ms ease-out;
+}
+.btn-secondary::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1.5px solid transparent;
+    border-radius: inherit; /* Match button's border-radius */
+    background: radial-gradient(
+            circle at var(--gradient-pos-x) var(--gradient-pos-y),
+            rgba(255, 215, 120, 0.9) 0%,
+            rgba(242, 187, 90, 0.6) 10%,
+            rgba(191, 122, 0, 0.4) 25%,
+            rgb(143 168 255 / 10%) 42%
+        )
+        border-box;
+    -webkit-mask:
+        linear-gradient(#fff 0 0) padding-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+    pointer-events: none; /* Makes sure the button remains clickable */
 }
 .btn-secondary:hover {
     box-shadow:
