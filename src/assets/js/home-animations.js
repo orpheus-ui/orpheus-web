@@ -1,36 +1,45 @@
 import { gsap } from "./gsap-config";
 
 export function initHeroAnimations() {
-  // GSAP Timeline
-  let tl = gsap.timeline({
+  const tl = gsap.timeline({
     defaults: {
-      ease: "power4.inOut",
-      duration: 3,
+      ease: "power2.out",
     },
   });
 
+  // Animate hero image with a slight scale effect
   tl.fromTo(
     ".heroImg",
-    { x: 200, opacity: 0, duration: 1, delay: 2 },
-    { x: 0, opacity: 1, duration: 1, ease: "power3.out" },
+    { x: 200, opacity: 0, scale: 0.95 },
+    {
+      x: 0,
+      opacity: 1,
+      scale: 1,
+      duration: 1.2,
+      ease: "power3.out",
+      delay: 0.5,
+    },
   )
+    // Animate hero title with a subtle rotation for extra flair
     .fromTo(
       ".heroTitle",
-      { x: -200, opacity: 0, duration: 1.5 },
-      { x: 0, opacity: 1, duration: 1.5, delay: 0.5, ease: "power3.out" },
-      "-=1.2",
+      { x: -150, opacity: 0, rotation: -5 },
+      { x: 0, opacity: 1, rotation: 0, duration: 1.3, ease: "power3.out" },
+      "-=0.8",
     )
+    // Animate hero text smoothly rising into view
     .fromTo(
       ".heroTxt",
-      { opacity: 0, y: 100, duration: 1 },
+      { opacity: 0, y: 50 },
       { opacity: 1, y: 0, duration: 1, ease: "power3.out" },
-      "-=1",
+      "-=0.8",
     )
+    // Animate hero buttons with a gentle stagger
     .fromTo(
       ".heroBtn",
-      { x: -100, opacity: 0, stagger: 1.5, duration: 1 },
-      { x: 0, opacity: 1, stagger: 0.5, duration: 1 },
-      "-=1",
+      { x: -100, opacity: 0 },
+      { x: 0, opacity: 1, duration: 1, ease: "power3.out", stagger: 0.3 },
+      "-=0.7",
     );
 }
 
