@@ -13,6 +13,7 @@
 
 body {
     @apply block font-default antialiased bg-dark text-white selection:bg-gold-200 selection:text-dark underline-offset-8;
+    overflow-x: hidden;
 }
 svg {
     pointer-events: none;

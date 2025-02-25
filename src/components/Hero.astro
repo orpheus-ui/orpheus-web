@@ -11,7 +11,7 @@ import heroImg from "public/images/optimized/hero2-min.webp";
     class="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-x-hidden"
 >
     <!-- Centered content as before -->
-    <section class="max-w-8xl mx-auto px-6 lg:px-12 mt-6">
+    <section class="max-w-8xl mx-auto px-6 lg:px-12">
         <section
             class="flex flex-col-reverse items-center lg:flex-row gap-y-6 relative"
         >
@@ -69,7 +69,9 @@ import heroImg from "public/images/optimized/hero2-min.webp";
                 </div>
             </div>
             <!-- Hero Image: Remove extra right offsets so GSAP controls its position -->
-            <div class="pointer-events-none select-none relative heroImg">
+            <div
+                class="pointer-events-none select-none relative heroImg right-6"
+            >
                 <img
                     src={heroImg.src}
                     width="1286"
