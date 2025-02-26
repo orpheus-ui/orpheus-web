@@ -77,7 +77,7 @@ export function initScrollAnimations() {
 export function animateButtonGradient() {
   const tl = gsap.timeline({
     repeat: -1,
-    defaults: { ease: "none" }, // Shorter duration per segment
+    defaults: { ease: "none" },
   });
 
   tl.to(".btn-secondary", {

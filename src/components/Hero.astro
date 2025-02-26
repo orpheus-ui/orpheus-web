@@ -7,7 +7,9 @@ import heroImg from "public/images/optimized/hero2-min.webp";
 ---
 
 <!-- Full-width breakout wrapper -->
-<div class="hero-wrapper">
+<div
+    class="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-hidden"
+>
     <!-- Centered content as before -->
     <section class="max-w-8xl mx-auto px-6 lg:px-12">
         <section
@@ -15,7 +17,7 @@ import heroImg from "public/images/optimized/hero2-min.webp";
         >
             <div class="w-full space-y-6 lg:w-1/2 lg:my-auto">
                 <h2
-                    class="text-gold-300 text-center lg:leading-none lg:text-start font-cinzel golden-text heroTitle opacity-0"
+                    class="text-gold-300 text-center lg:leading-[5rem] lg:text-start font-cinzel golden-text heroTitle opacity-0"
                 >
                     <span
                         class="text-nowrap"
@@ -38,7 +40,7 @@ import heroImg from "public/images/optimized/hero2-min.webp";
                     ...
                 </p>
                 <div
-                    class="flex gap-6 flex-wrap heroTxt justify-center lg:justify-normal"
+                    class="flex gap-6 flex-wrap heroTxt justify-center md:justify-normal"
                 >
                     <Button
                         url="#"
@@ -68,7 +70,7 @@ import heroImg from "public/images/optimized/hero2-min.webp";
             </div>
             <!-- Hero Image: Remove extra right offsets so GSAP controls its position -->
             <div
-                class="pointer-events-none select-none relative heroImg right-6 lg:right-0"
+                class="pointer-events-none select-none relative heroImg right-6"
             >
                 <img
                     src={heroImg.src}
@@ -81,11 +83,3 @@ import heroImg from "public/images/optimized/hero2-min.webp";
         </section>
     </section>
 </div>
-<style>
-    .hero-wrapper {
-        margin-left: calc(50% - 50vw);
-        margin-right: calc(50% - 50vw);
-        width: 100vw;
-        position: relative;
-    }
-</style>
