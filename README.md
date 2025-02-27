@@ -12,12 +12,7 @@ Built with care using:
 - 📱 **Tailwind CSS** for responsive design
 - 🎭 **Clean aesthetics** with attention to detail
 
-<div align="center">
-  <a href="https://www.figma.com/community/file/1114495915109608886" target="_blank">
-    <img src="https://skillicons.dev/icons?i=figma" alt="Figma" width="20" height="20" style="margin-right: 8px;" />
-    Check out the Design in Figma
-  </a>
-</div>
+[![Figma](https://www.vectorlogo.zone/logos/figma/figma-icon.svg)](https://www.figma.com/community/file/1114495915109608886) [Check out the Design in Figma](https://www.figma.com/community/file/1114495915109608886)
 
 
 ## 🚀 Getting Started
