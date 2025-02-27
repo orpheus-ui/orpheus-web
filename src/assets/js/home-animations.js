@@ -67,6 +67,28 @@ export function initScrollAnimations() {
       },
     );
   });
+  // Parallax for background elements
+  gsap.to(".bgHome:first-child", {
+    y: 400,
+    ease: "ease",
+    scrollTrigger: {
+      trigger: "main",
+      start: "top top",
+      end: "bottom bottom",
+      scrub: true,
+    },
+  });
+
+  gsap.to(".bgHome.rotate-180", {
+    y: -400,
+    ease: "ease",
+    scrollTrigger: {
+      trigger: "main",
+      start: "top top",
+      end: "bottom bottom",
+      scrub: true,
+    },
+  });
 }
 
 export function animateButtonGradient() {

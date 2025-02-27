@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
 :root {
     cursor: default;
     -webkit-user-select: none; /* Safari */
@@ -82,8 +88,8 @@ svg {
 
     @apply relative justify-center py-3 px-8 text-lg tracking-widest uppercase rounded-sm font-medium;
     color: rgb(157 167 189);
-    background: transparent; /* Button background is transparent */
-    border: none; /* Remove default border */
+    background: transparent;
+    border: none;
     position: relative;
     transition: all 250ms ease-out;
 }
@@ -235,7 +241,7 @@ svg {
     stroke-dasharray: 40 160;
 }
 .ham8 .middle {
-    stroke-dasharray: 40 160; /* Match the top line */
+    stroke-dasharray: 40 160;
     transform-origin: 50%;
 }
 .ham8 .bottom {
@@ -269,6 +275,6 @@ svg {
     mix-blend-mode: difference;
     opacity: 0;
     @media (max-width: 768px), (hover: none) {
-        display: none !important; /* Added !important to override any GSAP styles */
+        display: none !important;
     }
 }
