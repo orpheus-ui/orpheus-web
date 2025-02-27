@@ -6,18 +6,20 @@ export function initMobileMenu() {
   const navItems = gsap.utils.toArray(".nav-item");
   let menuOpen = false;
 
-  gsap.set(".mobile-menu-wrapper", { yPercent: -100 });
+  gsap.set(".mobile-menu-wrapper", { yPercent: -100, visibility: "hidden" });
   const mobileTl = gsap.timeline().reverse();
 
   mobileTl
     .to(".mobile-menu-wrapper", {
       yPercent: 0,
       opacity: 1,
+      visibility: "visible",
       ease: "power2.out",
     })
     .from(navItems, {
       y: -10,
       autoAlpha: 0,
+      visibility: "hidden",
       duration: 0.5,
       stagger: 0.065,
     });
