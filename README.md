@@ -1,27 +1,24 @@
-# Orpheus - Interactive Storytelling Portfolio
+# Orpheus - Designer Portfolio
 
 ![Orpheus Preview](./public/images/optimized/preview.webp)
 
-A modern, interactive portfolio website that brings the ancient tale of Orpheus to life through engaging animations and responsive design.
+(work in progress...)
+A modern designer's portfolio that brings creative concepts to life. Designed thoughtfully in Figma and built with Astro.js, featuring smooth animations and responsive design throughout the experience.
 
-## 🌟 Features
+## From Design to Code
+Built with care using:
+- 🚀 **Astro.js** for fast performance
+- ✨ **GSAP** for smooth animations
+- 📱 **Tailwind CSS** for responsive design
+- 🎭 **Clean aesthetics** with attention to detail
 
-- Beautifully crafted portfolio
-- Smooth scroll animations
-- Responsive typography and layout
-- Custom cursor animations
-- Parallax effects
-- Dynamic color schemes
-- Mobile-friendly design
+<div align="center">
+  <a href="https://www.figma.com/community/file/1114495915109608886" target="_blank">
+    <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fcommons.wikimedia.org%2Fwiki%2FFile%3AFigma-logo.svg&psig=AOvVaw3gSsUYjwVKMCuI0DRALVfL&ust=1740772559168000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCNidnqDR5IsDFQAAAAAdAAAAABAE" alt="Figma" width="20" height="20" style="margin-right: 8px;" />
+    Check out the Design in Figma
+  </a>
+</div>
 
-## 🛠️ Built With
-
-- [Astro](https://astro.build/) - Web Framework
-- [TailwindCSS](https://tailwindcss.com/) - Styling
-- [GSAP](https://greensock.com/gsap/) - Animations
-- [Locomotive Scroll](https://locomotivemtl.github.io/locomotive-scroll/) - Smooth Scrolling
-- Custom Cursor Implementation
-- Responsive Typography System
 
 ## 🚀 Getting Started
 
@@ -45,13 +42,6 @@ pnpm run dev
 pnpm run build
 ```
 
-## 🎨 Customization
-
-- Typography can be adjusted in the TailwindCSS config
-- Color schemes are customizable through CSS variables
-- Animation timings and effects can be modified in GSAP configurations
-- Responsive breakpoints are configured in TailwindCSS settings
-
 ## 🌐 Browser Support
 
 - Chrome (latest)
@@ -65,16 +55,11 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## 🤝 Contributing
 
-Contributions, issues, and feature requests are welcome! Feel free to check [issues page](your-issues-link).
-
-## 💐 Acknowledgments
-
-- Design inspiration from classic Greek mythology
-- Special thanks to the Astro community
-- All contributors and supporters
+Contributions, issues, and feature requests are welcome! Feel free to check [issues page](https://github.com/orpheus-ui/orpheus-web/issues).
 
 ## 📝 TODO
 ### For now
-- [ ] Fix mobile responsiveness issues
+- [x] Fix mobile responsiveness issues
 - [ ] Optimize performance
-- [ ] Create Works & Blog Page and collections
+- [ ] Create Works Page and collections
+- [ ] Create Blog Page and collections
