@@ -7,8 +7,6 @@
     -webkit-user-select: none; /* Safari */
     -ms-user-select: none; /* IE 10 and IE 11 */
     user-select: none; /* Standard syntax */
-    --mouse-x: 0px;
-    --mouse-y: 0px;
     overflow-x: clip;
     margin-right: calc(-1 * (100vw - 100%));
 }

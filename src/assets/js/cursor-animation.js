@@ -1,66 +1,78 @@
-// src/assets/js/cursor-animation.js
 import { gsap } from "./gsap-config";
 
 export function initCursor() {
-  // Check for touch devices FIRST
+  // Check for devices without hover capability (touch devices)
   if (window.matchMedia("(hover: none)").matches) return;
 
-  const root = document.documentElement;
   const cursorFollower = document.querySelector(".cursor-follower");
 
-  // Rest of your code...
-  gsap.set(".cursor-follower", {
-    scale: 1,
-    opacity: 1,
+  // Initial setup for cursor follower (hidden on page load)
+  gsap.set(cursorFollower, {
+    opacity: 0,
     width: 16,
     height: 16,
     backgroundColor: "transparent",
     borderWidth: 1,
+    borderColor: "rgb(226 183 102 / 65%)",
   });
 
-  let pos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-  let mouse = { x: pos.x, y: pos.y };
-  let speed = 0.08;
-  let fpms = 60 / 280;
+  let mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+  let pos = { x: mouse.x, y: mouse.y };
 
-  let xSet = gsap.quickSetter(cursorFollower, "x", "px");
-  let ySet = gsap.quickSetter(cursorFollower, "y", "px");
+  const speed = 0.1; // Control the cursor speed (smoothness)
+  const xSetter = gsap.quickSetter(cursorFollower, "x", "px");
+  const ySetter = gsap.quickSetter(cursorFollower, "y", "px");
 
+  // Wait for the first mousemove event to start the animation
+  let isMouseMoved = false;
   window.addEventListener("mousemove", (e) => {
+    if (!isMouseMoved) {
+      isMouseMoved = true;
+      gsap.to(cursorFollower, {
+        opacity: 1,
+        duration: 0.3,
+        ease: "power3.out",
+      });
+    }
+
     mouse.x = e.x;
     mouse.y = e.y;
-    root.style.setProperty("--mouse-x", mouse.x + "px");
-    root.style.setProperty("--mouse-y", mouse.y + "px");
   });
 
-  gsap.ticker.add((time, deltaTime) => {
-    var delta = deltaTime * fpms;
-    var dt = 1.0 - Math.pow(1.0 - speed, delta);
+  // Smoothly follow the mouse position with GSAP ticker
+  gsap.ticker.add(() => {
+    const deltaX = mouse.x - pos.x;
+    const deltaY = mouse.y - pos.y;
+    pos.x += deltaX * speed;
+    pos.y += deltaY * speed;
 
-    pos.x += (mouse.x - pos.x) * dt;
-    pos.y += (mouse.y - pos.y) * dt;
-    xSet(pos.x);
-    ySet(pos.y);
+    xSetter(pos.x);
+    ySetter(pos.y);
   });
 
-  const menuButton = document.querySelectorAll("a");
-  menuButton.forEach(function (btn) {
-    btn.addEventListener("mouseover", (e) => {
-      gsap.to(".cursor-follower", {
-        width: 86,
-        height: 86,
-        backgroundColor: "#edc877",
-        borderWidth: 0,
-        ease: "power3.out",
+  // Hover effect for interactive elements (e.g., buttons, links)
+  const interactiveElements = document.querySelectorAll(
+    "a, button, .hover-target",
+  );
+  interactiveElements.forEach((el) => {
+    el.addEventListener("mouseenter", () => {
+      gsap.to(cursorFollower, {
+        width: 68,
+        height: 68,
+        backgroundColor: "rgb(226, 183, 102)",
+        borderWidth: 2,
+        opacity: 1,
+        ease: "power4.out",
       });
     });
 
-    btn.addEventListener("mouseout", (e) => {
-      gsap.to(".cursor-follower", {
+    el.addEventListener("mouseleave", () => {
+      gsap.to(cursorFollower, {
         width: 16,
         height: 16,
         backgroundColor: "transparent",
         borderWidth: 1,
+        opacity: 0.75,
         ease: "power3.out",
       });
     });
