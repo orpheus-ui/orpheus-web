@@ -1,17 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="467" height="491" fill="none" viewBox="0 0 467 491">
-  <g filter="url(#a)" opacity=".5">
-    <ellipse cx="233.5" cy="245.285" fill="url(#b)" rx="200.5" ry="212"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="644" height="523" fill="none" viewBox="0 0 644 523">
+  <mask id="a" width="644" height="523" x="0" y="0" maskUnits="userSpaceOnUse" style="mask-type:alpha">
+    <path fill="#D9D9D9" d="M0 0h644v523H0z"/>
+  </mask>
+  <g mask="url(#a)">
+    <ellipse cx="465" cy="308" fill="url(#b)" opacity=".5" rx="478" ry="506"/>
   </g>
   <defs>
-    <radialGradient id="b" cx="0" cy="0" r="1" gradientTransform="rotate(134.864 146.889 112.162) scale(381.492 207.607)" gradientUnits="userSpaceOnUse">
+    <radialGradient id="b" cx="0" cy="0" r="1" gradientTransform="matrix(-598.91643 472.65634 -257.21664 -325.9266 695.075 -69.383)" gradientUnits="userSpaceOnUse">
       <stop stop-color="#8FBFFD" stop-opacity=".5"/>
       <stop offset=".296" stop-color="#26487A" stop-opacity=".6"/>
       <stop offset="1" stop-color="#0F1218" stop-opacity="0"/>
     </radialGradient>
-    <filter id="a" width="466.523" height="489.523" x=".238" y=".523" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
-      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-      <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-      <feGaussianBlur result="effect1_foregroundBlur_1010_293" stdDeviation="16.381"/>
-    </filter>
   </defs>
 </svg>
