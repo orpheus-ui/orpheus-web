@@ -1,12 +1,10 @@
 import { gsap } from "./gsap-config";
 
 export function initCursor() {
-  // Check for devices without hover capability (touch devices)
   if (window.matchMedia("(hover: none)").matches) return;
 
   const cursorFollower = document.querySelector(".cursor-follower");
 
-  // Initial setup for cursor follower (hidden on page load)
   gsap.set(cursorFollower, {
     opacity: 0,
     width: 16,
@@ -19,11 +17,10 @@ export function initCursor() {
   let mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
   let pos = { x: mouse.x, y: mouse.y };
 
-  const speed = 0.1; // Control the cursor speed (smoothness)
+  const speed = 0.1;
   const xSetter = gsap.quickSetter(cursorFollower, "x", "px");
   const ySetter = gsap.quickSetter(cursorFollower, "y", "px");
 
-  // Wait for the first mousemove event to start the animation
   let isMouseMoved = false;
   window.addEventListener("mousemove", (e) => {
     if (!isMouseMoved) {
@@ -39,7 +36,6 @@ export function initCursor() {
     mouse.y = e.y;
   });
 
-  // Smoothly follow the mouse position with GSAP ticker
   gsap.ticker.add(() => {
     const deltaX = mouse.x - pos.x;
     const deltaY = mouse.y - pos.y;
@@ -50,7 +46,6 @@ export function initCursor() {
     ySetter(pos.y);
   });
 
-  // Hover effect for interactive elements (e.g., buttons, links)
   const interactiveElements = document.querySelectorAll(
     "a, button, .hover-target",
   );
