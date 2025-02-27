@@ -13,8 +13,14 @@ Built with care using:
 - 🎭 **Clean aesthetics** with attention to detail
 
 <div align="center">
-  <a href="https://www.figma.com/community/file/1114495915109608886" target="_blank">
-    <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fcommons.wikimedia.org%2Fwiki%2FFile%3AFigma-logo.svg&psig=AOvVaw3gSsUYjwVKMCuI0DRALVfL&ust=1740772559168000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCNidnqDR5IsDFQAAAAAdAAAAABAE" alt="Figma" width="20" height="20" style="margin-right: 8px;" />
+  <a href="YOUR_FIGMA_LINK" target="_blank" style="display: inline-flex; align-items: center; gap: 8px;">
+    <svg width="20" height="30" viewBox="0 0 38 57" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#00b6ff" d="M19 28.5c0-5.247 4.253-9.5 9.5-9.5 5.247 0 9.5 4.253 9.5 9.5 0 5.247-4.253 9.5-9.5 9.5-5.247 0-9.5-4.253-9.5-9.5"/>
+      <path fill="#24cb71" d="M0 47.5C0 42.253 4.253 38 9.5 38H19v9.5c0 5.247-4.253 9.5-9.5 9.5C4.253 57 0 52.747 0 47.5"/>
+      <path fill="#ff7237" d="M19 0v19h9.5c5.247 0 9.5-4.253 9.5-9.5C38 4.253 33.747 0 28.5 0z"/>
+      <path fill="#ff3737" d="M0 9.5C0 14.747 4.253 19 9.5 19H19V0H9.5C4.253 0 0 4.253 0 9.5"/>
+      <path fill="#874fff" d="M0 28.5C0 33.747 4.253 38 9.5 38H19V19H9.5C4.253 19 0 23.253 0 28.5"/>
+    </svg>
     Check out the Design in Figma
   </a>
 </div>
