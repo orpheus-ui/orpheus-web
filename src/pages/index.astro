@@ -43,17 +43,23 @@ const slides = [
     <!-- Main Section -->
     <main>
         <div
-            class="absolute lg:-top-48 -z-10 -left-0 overflow-hidden pointer-events-none"
+            class="absolute lg:-top-72 -z-10 -left-60 overflow-hidden pointer-events-none"
         >
-            <img src="/images/optimized/bg-left-min.webp" />
+            <img
+                src="/images/bg-left.svg"
+                class="w-[calc(100vw+100px)] max-w-[1800px] min-w-[370px] h-auto"
+            />
         </div>
 
         <Hero />
         <Recent {slides} />
         <div
-            class="absolute lg:top-2/3 -z-10 right-0 rotate-180 overflow-hidden pointer-events-none"
+            class="absolute lg:top-2/4 -z-10 -right-60 rotate-180 overflow-hidden pointer-events-none"
         >
-            <img src="/images/optimized/bg-left-min.webp" />
+            <img
+                src="/images/bg-left.svg"
+                class="w-[calc(100vw+200px)] max-w-[1800px] min-w-[400px] h-auto"
+            />
         </div>
         <Contribution />
         <Socials />

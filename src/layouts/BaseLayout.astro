@@ -81,19 +81,23 @@ const { title, layoutType = "default", seoDescription, seoImage } = Astro.props;
     </head>
     <body data-layout={layoutType}>
         <div class="cursor-follower"></div>
-        <div
-            class="absolute top-0 right-0 overflow-hidden pointer-events-none -z-10 bg-placeholder top-right w-[450px] md:w-[600px] lg:w-[860px] opacity-0 topRightBg"
-        >
-            <img
-                src="/images/optimized/bg-top-right-min.webp"
-                width="1001"
-                height="1162"
-                alt=""
-                loading="eager"
-                fetchpriority="high"
-                decoding="async"
-                class="w-full h-full object-cover"
-            />
+        <!-- Wrapper container for positioning -->
+        <div class="relative w-full">
+            <!-- The child div that uses -right-56 for positioning -->
+            <div
+                class="absolute -top-32 -right-48 overflow-visible pointer-events-none -z-10 bg-placeholder top-right w-[600px] md:w-[860px] opacity-0 topRightBg"
+            >
+                <img
+                    src="/images/bg-top.svg"
+                    width="1001"
+                    height="1162"
+                    alt=""
+                    loading="eager"
+                    fetchpriority="high"
+                    decoding="async"
+                    class="w-full h-full object-cover"
+                />
+            </div>
         </div>
         <Navigation />
         <slot />
