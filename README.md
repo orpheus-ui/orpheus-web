@@ -12,8 +12,7 @@ Built with care using:
 - 📱 **Tailwind CSS** for responsive design
 - 🎭 **Clean aesthetics** with attention to detail
 
-[![Figma](https://www.vectorlogo.zone/logos/figma/figma-icon.svg)](https://www.figma.com/community/file/1114495915109608886) [Check out the Design in Figma](https://www.figma.com/community/file/1114495915109608886)
-
+<img src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg" alt="Figma" width="16" height="16"/> [Check out the Design in Figma](https://www.figma.com/community/file/1114495915109608886)
 
 ## 🚀 Getting Started
 
