@@ -76,48 +76,24 @@ const { title, layoutType = "default", seoDescription, seoImage } = Astro.props;
                 font-display: swap;
                 --fallback-size-adjust: 0.98;
             }
-            .bg-hero {
-                background-image: url("/images/optimized/bg-top-right-min.webp");
-                background-size: cover;
-                background-position: top right;
-                width: 100%;
-                height: 100%;
-            }
         </style>
         <title>{title}</title>
     </head>
     <body data-layout={layoutType}>
         <div class="cursor-follower"></div>
         <div
-            class="absolute top-0 right-0 overflow-hidden pointer-events-none -z-10 bg-placeholder top-right"
+            class="absolute top-0 right-0 overflow-hidden pointer-events-none -z-10 bg-placeholder top-right w-[450px] md:w-[600px] lg:w-[860px] opacity-0 topRightBg"
         >
-            <picture>
-                <!-- Larger screens -->
-                <source
-                    media="(min-width: 1024px)"
-                    srcset="/images/optimized/bg-top-right-min.webp"
-                    width="1001"
-                    height="1162"
-                />
-                <!-- Medium screens -->
-                <source
-                    media="(min-width: 768px)"
-                    srcset="/images/optimized/bg-top-right-min.webp"
-                    width="800"
-                    height="864"
-                />
-                <!-- Base image -->
-                <img
-                    src="/images/optimized/bg-top-right-min.webp"
-                    width="600"
-                    height="648"
-                    alt=""
-                    loading="eager"
-                    fetchpriority="high"
-                    decoding="async"
-                    class="w-full h-full object-cover"
-                />
-            </picture>
+            <img
+                src="/images/optimized/bg-top-right-min.webp"
+                width="1001"
+                height="1162"
+                alt=""
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
+                class="w-full h-full object-cover"
+            />
         </div>
         <Navigation />
         <slot />
