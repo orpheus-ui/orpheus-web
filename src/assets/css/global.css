@@ -235,9 +235,8 @@ svg {
     stroke-dasharray: 40 160;
 }
 .ham8 .middle {
-    stroke-dasharray: 40 142;
+    stroke-dasharray: 40 160; /* Match the top line */
     transform-origin: 50%;
-    transition: transform 400ms;
 }
 .ham8 .bottom {
     stroke-dasharray: 40 85;
@@ -250,7 +249,6 @@ svg {
     stroke-dashoffset: -64px;
 }
 .ham8.active .middle {
-    //stroke-dashoffset: -20px;
     transform: rotate(90deg);
 }
 .ham8.active .bottom {
