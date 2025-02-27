@@ -101,3 +101,13 @@ export function animateButtonGradient() {
       duration: 0.7,
     });
 }
+
+export function homeBg() {
+  const tl = gsap.timeline({
+    defaults: {
+      ease: "power2.out",
+      delay: 1,
+    },
+  });
+  tl.to(".bgHome", { opacity: 1, stagger: { amount: 0.5 } });
+}
