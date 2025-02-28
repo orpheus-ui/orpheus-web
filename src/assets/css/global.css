@@ -86,12 +86,14 @@ svg {
     --gradient-pos-x: 0%;
     --gradient-pos-y: 0%;
 
-    @apply relative justify-center py-3 px-8 text-lg tracking-widest uppercase rounded-sm font-medium;
+    @apply inline-flex gap-x-0.5 items-center justify-center py-3 px-8 leading-none text-base tracking-widest rounded-sm font-medium;
     color: rgb(157 167 189);
     background: transparent;
     border: none;
     position: relative;
-    transition: all 250ms ease-out;
+    transition:
+        transform 200ms ease-out,
+        box-shadow 200ms ease-out;
 }
 .btn-secondary::before {
     content: "";
@@ -118,14 +120,14 @@ svg {
     pointer-events: none; /* Makes sure the button remains clickable */
 }
 .btn-secondary:hover {
+    transform: scale(1.1);
     box-shadow:
-        0 0.5em 1.5em theme("colors.gold.200"/0.1),
-        0 0.2em 0.5em theme("colors.gold.100"/0.04);
-    transform: scale(1.04);
+        0 0.4em 1.5em rgb(195 127 4 / 24%),
+        0 0.2em 0.8em rgb(255 192 28 / 15%);
 }
 
 .btn-primary {
-    @apply relative justify-center text-dark py-3 px-6 text-lg tracking-widest uppercase rounded-sm font-medium;
+    @apply inline-flex gap-x-0.5 items-center justify-center text-dark py-3 px-6 text-base leading-none tracking-widest rounded-sm font-medium;
     background: linear-gradient(
         to top right,
         theme("colors.gold.300"),
@@ -133,12 +135,14 @@ svg {
         theme("colors.gold.100")
     );
     background-position: 0% 0%;
-    transition: all 250ms ease-out;
+    transition:
+        transform 200ms ease-out,
+        text-shadow 200ms ease-out;
 }
 
 .btn-primary:hover {
+    transform: scale(1.1);
     text-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
-    transform: scale(1.04);
 }
 
 .divider-vertical {

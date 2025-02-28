@@ -27,7 +27,7 @@ export function initCursor() {
       isMouseMoved = true;
       gsap.to(cursorFollower, {
         opacity: 1,
-        duration: 0.3,
+        duration: 1,
         ease: "power3.out",
       });
     }

@@ -33,8 +33,22 @@ export function initHeroAnimations() {
     )
     .fromTo(
       ".heroBtn",
-      { x: -100, opacity: 0 },
-      { x: 0, opacity: 1, duration: 1, ease: "power3.out", stagger: 0.3 },
+      {
+        x: -120,
+        opacity: 0,
+        scale: 1,
+        rotateZ: 0,
+        z: 0,
+      },
+      {
+        x: 0,
+        opacity: 1,
+        scale: 1,
+        duration: 1,
+        ease: "power3.out",
+        stagger: 0.2,
+        clearProps: "scale", // Clear all transform properties after animation
+      },
       "-=0.7",
     );
 }
