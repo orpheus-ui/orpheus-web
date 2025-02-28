@@ -1,9 +1,16 @@
 ---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
 // Component
 import Button from "../components/ui/Button.astro";
 
 // Heo Image
 import heroImg from "public/images/optimized/hero2-min.webp";
+const breakpoints = {
+    mobile: 480,
+    tablet: 800,
+    desktop: 1286,
+};
 ---
 
 <!-- Full-width breakout wrapper -->
@@ -72,13 +79,35 @@ import heroImg from "public/images/optimized/hero2-min.webp";
             <div
                 class="pointer-events-none select-none relative heroImg right-6"
             >
-                <img
-                    src={heroImg.src}
-                    width="1286"
-                    height="1052"
-                    alt="Orpheus Hero"
-                    class="opacity-0 heroImg"
-                />
+                <picture>
+                    <source
+                        type="image/webp"
+                        srcset={Object.entries(breakpoints)
+                            .map(
+                                ([_, width]) =>
+                                    `${heroImg.src}?w=${width}&format=webp ${width}w`,
+                            )
+                            .join(", ")}
+                        sizes="(max-width: 480px) 480px,
+                           (max-width: 800px) 800px,
+                           1286px"
+                    />
+                    <Image
+                        src={heroImg}
+                        width={1286}
+                        height={1052}
+                        loading="eager"
+                        quality={80}
+                        format="webp"
+                        alt="Orpheus Hero"
+                        class="opacity-0 heroImg"
+                        decoding="async"
+                        style={{
+                            aspectRatio: "1286/1052",
+                            objectFit: "contain",
+                        }}
+                    />
+                </picture>
             </div>
         </section>
     </section>

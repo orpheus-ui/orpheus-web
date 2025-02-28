@@ -26,7 +26,7 @@ async function optimizeImages() {
             fit: "inside",
           })
           .webp({
-            quality: 60,
+            quality: 70,
             effort: 4,
             nearLossless: false,
           }) // convert to WebP with 80% quality
