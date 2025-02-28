@@ -1,15 +1,9 @@
 ---
-import { Image } from "astro:assets";
 // Component
 import Button from "../components/ui/Button.astro";
 
 // Heo Image
-import heroImg from "../assets/images/hero-2.webp";
-const breakpoints = {
-    mobile: 480,
-    tablet: 800,
-    desktop: 1286,
-};
+import heroImg from "public/images/optimized/hero2-min.webp";
 ---
 
 <!-- Full-width breakout wrapper -->
@@ -78,35 +72,13 @@ const breakpoints = {
             <div
                 class="pointer-events-none select-none relative heroImg right-6"
             >
-                <picture>
-                    <source
-                        type="image/webp"
-                        srcset={Object.entries(breakpoints)
-                            .map(
-                                ([_, width]) =>
-                                    `${heroImg.src}?w=${width}&format=webp ${width}w`,
-                            )
-                            .join(", ")}
-                        sizes="(max-width: 480px) 480px,
-                           (max-width: 800px) 800px,
-                           1286px"
-                    />
-                    <Image
-                        src={heroImg}
-                        width={1286}
-                        height={1052}
-                        loading="eager"
-                        quality={70}
-                        format="webp"
-                        alt="Orpheus Hero"
-                        class="opacity-0 heroImg"
-                        decoding="async"
-                        style={{
-                            aspectRatio: "1286/1052",
-                            objectFit: "contain",
-                        }}
-                    />
-                </picture>
+                <img
+                    src={heroImg.src}
+                    width="1286"
+                    height="1052"
+                    alt="Orpheus Hero"
+                    class="opacity-0 heroImg"
+                />
             </div>
         </section>
     </section>
