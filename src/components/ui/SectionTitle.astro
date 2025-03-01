@@ -1,18 +1,27 @@
 ---
 export interface Props {
-  title?: string;
-  linkTitle?: string;
-  url?: string;
+    title?: string;
+    linkTitle?: string;
+    url?: string;
 }
-const { title = "title", linkTitle = "link", url = "#" } = Astro.props as Props;
+const { title = "title", linkTitle, url } = Astro.props as Props;
 ---
 
 <div class="flex items-center uppercase lg:mb-0 lg:mr-auto">
-  <h3 class="text-xl font-extrabold golden-text tracking-wider">
-    {title}
-  </h3>
-  <div class="divider-vertical mx-4"></div>
-  <a href={url} class="text-sm hover:text-gold-300 transition-colors ease-out"
-    >{linkTitle}
-  </a>
+    <h3 class="text-xl font-extrabold golden-text tracking-wider">
+        {title}
+    </h3>
+    {
+        linkTitle && url && (
+            <>
+                <div class="divider-vertical mx-4" />
+                <a
+                    href={url}
+                    class="text-sm hover:text-gold-300 transition-colors ease-out"
+                >
+                    {linkTitle}
+                </a>
+            </>
+        )
+    }
 </div>

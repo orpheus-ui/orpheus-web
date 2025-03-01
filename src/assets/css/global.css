@@ -86,8 +86,7 @@ svg {
     --gradient-pos-x: 0%;
     --gradient-pos-y: 0%;
 
-    @apply inline-flex gap-x-0.5 items-center justify-center py-3 px-8 leading-none text-base tracking-widest rounded-sm font-medium;
-    color: rgb(157 167 189);
+    @apply inline-flex items-center justify-center leading-none rounded-sm font-medium;
     background: transparent;
     border: none;
     position: relative;
@@ -103,7 +102,7 @@ svg {
     right: 0;
     bottom: 0;
     border: 1.5px solid transparent;
-    border-radius: inherit; /* Match button's border-radius */
+    border-radius: inherit;
     background: radial-gradient(
             circle at var(--gradient-pos-x) var(--gradient-pos-y),
             rgba(255, 215, 120, 0.9) 0%,
@@ -117,7 +116,7 @@ svg {
         linear-gradient(#fff 0 0);
     -webkit-mask-composite: destination-out;
     mask-composite: exclude;
-    pointer-events: none; /* Makes sure the button remains clickable */
+    pointer-events: none;
 }
 .btn-secondary:hover {
     transform: scale(1.1);
@@ -127,7 +126,7 @@ svg {
 }
 
 .btn-primary {
-    @apply inline-flex gap-x-0.5 items-center justify-center text-dark py-3 px-6 text-base leading-none tracking-widest rounded-sm font-medium;
+    @apply inline-flex items-center justify-center text-dark leading-none rounded-sm font-medium;
     background: linear-gradient(
         to top right,
         theme("colors.gold.300"),
@@ -210,7 +209,7 @@ svg {
 }
 
 .social-icons svg {
-    @apply transition-all ease-out duration-200;
+    @apply fill-white w-9 transition-all ease-out duration-200;
 }
 
 .social-icons:hover svg {
@@ -281,4 +280,7 @@ svg {
     @media (max-width: 768px), (hover: none) {
         display: none !important;
     }
+}
+.input-style {
+    @apply p-4 rounded-sm bg-transparent border text-zircon-100 focus:outline-none hover:border-zircon-300/40 transition ease-out duration-300 focus:border-zircon-300/60 focus:ring-4 focus:ring-zircon-200/10 placeholder-zircon-300/50;
 }

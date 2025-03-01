@@ -1,20 +1,275 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Socials from "../components/Socials.astro";
+import SectionTitle from "../components/ui/SectionTitle.astro";
+
+const pageTitle = "Orpheus - Get in touch";
+const CLOUDFLARE_SITE_KEY = import.meta.env.PUBLIC_CLOUDFLARE_SITE_KEY;
 ---
 
-<Layout title="Orpheus - Get in touch">
-    <form action="https://submit-form.com/eCn3nN9ma">
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" placeholder="Name" required="" />
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" placeholder="Email" required="" />
-        <label for="message">Message</label>
-        <textarea
-          id="message"
-          name="message"
-          placeholder="Message"
-          required=""
-        ></textarea>
-        <button type="submit">Send</button>
-      </form>
+<Layout title={pageTitle}>
+    <section class="max-w-8xl px-6 lg:px-12">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <!-- Contact Info -->
+            <div class="contact-info space-y-6">
+                <SectionTitle title="Contact Information" />
+                <p class="text-lg text-zircon-300">
+                    Feel free to reach out to me for any inquiries or
+                    collaborations.
+                </p>
+                <div class="space-y-3">
+                    <p class="text-lg">
+                        <span class="block font-bold text-gold-200">Email:</span
+                        >
+                        <a
+                            href="mailto:Hi@Raef.me"
+                            class="font-xl text-zircon-200 hover:text-gold-300 transition duration-300"
+                        >
+                            Hi@Raef.me
+                        </a>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form space-y-6">
+                <SectionTitle title="Contact Form" />
+                <form id="contactForm" class="space-y-5" novalidate>
+                    <div class="flex flex-col">
+                        <label for="name" class="text-sm font-medium mb-2"
+                            >Name</label
+                        >
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Your Name"
+                            class="input-style border-zircon-300/20"
+                            required
+                        />
+                        <p
+                            class="text-red-400 tracking-widest text-sm hidden mt-2"
+                            id="nameError"
+                        >
+                            Name is required.
+                        </p>
+                    </div>
+
+                    <div class="flex flex-col">
+                        <label for="email" class="text-sm font-medium mb-2"
+                            >Email</label
+                        >
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Your Email"
+                            class="input-style border-zircon-300/20"
+                            required
+                        />
+                        <p
+                            class="text-red-400 tracking-widest text-sm hidden mt-2"
+                            id="emailError"
+                        >
+                            Enter a valid email.
+                        </p>
+                    </div>
+
+                    <div class="flex flex-col">
+                        <label for="message" class="text-sm font-medium mb-2"
+                            >Message</label
+                        >
+                        <textarea
+                            id="message"
+                            name="message"
+                            placeholder="Your Message"
+                            class="input-style border-zircon-300/20"
+                            required></textarea>
+                        <p
+                            class="text-red-400 tracking-widest text-sm hidden mt-2"
+                            id="messageError"
+                        >
+                            Message cannot be empty.
+                        </p>
+                    </div>
+
+                    <!-- Cloudflare Turnstile Captcha -->
+                    <div
+                        class="cf-turnstile"
+                        data-sitekey="YOUR_CLOUDFLARE_SITE_KEY"
+                    >
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button
+                        type="submit"
+                        class="btn-secondary py-4 px-8 gap-2 text-zircon-200/80 text-lg w-full md:w-fit"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="w-5 fill-zircon-200/80"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                d="M21 3a1 1 0 0 1 1 1v16.007a1 1 0 0 1-.992.993H2.992A.993.993 0 0 1 2 20.007V19h18V7.3l-8 7.2-10-9V4a1 1 0 0 1 1-1h18ZM8 15v2H0v-2h8Zm-3-5v2H0v-2h5Zm14.566-5H4.434L12 11.81 19.566 5Z"
+                            ></path>
+                        </svg><span>Send Message</span>
+                    </button>
+                </form>
+
+                <!-- Success Message -->
+                <div
+                    id="successMessage"
+                    class="hidden text-green-400 text-lg font-bold"
+                >
+                    ✅ Thank you! Your message has been sent successfully.
+                </div>
+
+                <!-- Error Message -->
+                <div
+                    id="errorMessage"
+                    class="hidden text-red-400 text-lg font-bold"
+                >
+                    ❌ Oops! Something went wrong. Please try again.
+                </div>
+            </div>
+        </div>
+        <Socials />
+    </section>
 </Layout>
+<script>
+    import { animateButtonGradient } from "../assets/js/home-animations";
+
+    document.addEventListener("DOMContentLoaded", () => {
+        animateButtonGradient();
+    });
+</script>
+<script
+    src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+    async
+    defer
+    is:inline></script>
+<!-- Form Validation Script -->
+<script>
+    import gsap from "gsap";
+
+    document
+        .getElementById("contactForm")
+        ?.addEventListener("submit", async function (event) {
+            event.preventDefault();
+
+            const form = event.target as HTMLFormElement;
+            const formData = new FormData(form);
+
+            const name = document.getElementById("name") as HTMLInputElement;
+            const email = document.getElementById("email") as HTMLInputElement;
+            const message = document.getElementById(
+                "message",
+            ) as HTMLTextAreaElement;
+
+            const successMessage = document.getElementById(
+                "successMessage",
+            ) as HTMLElement;
+            const errorMessage = document.getElementById(
+                "errorMessage",
+            ) as HTMLElement;
+
+            const nameError = document.getElementById(
+                "nameError",
+            ) as HTMLElement;
+            const emailError = document.getElementById(
+                "emailError",
+            ) as HTMLElement;
+            const messageError = document.getElementById(
+                "messageError",
+            ) as HTMLElement;
+
+            // Reset styles & error messages
+            [name, email, message].forEach((input) => {
+                input.classList.remove("border-red-500");
+                input.classList.add("border-zircon-300/20");
+            });
+            [
+                nameError,
+                emailError,
+                messageError,
+                successMessage,
+                errorMessage,
+            ].forEach((el) => el.classList.add("hidden"));
+
+            let valid = true;
+
+            // Error Animation Function
+            const animateError = (
+                input: HTMLInputElement | HTMLTextAreaElement,
+                errorEl: HTMLElement,
+            ) => {
+                input.classList.add("border-red-500");
+                input.classList.remove("border-zircon-300/20");
+                errorEl.classList.remove("hidden");
+
+                gsap.fromTo(
+                    input,
+                    { x: -5 },
+                    { x: 5, duration: 0.1, repeat: 4, yoyo: true },
+                );
+            };
+
+            // Validate Name
+            if (name.value.trim() === "") {
+                animateError(name, nameError);
+                valid = false;
+            }
+
+            // Validate Email
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email.value.trim())) {
+                animateError(email, emailError);
+                valid = false;
+            }
+
+            // Validate Message
+            if (message.value.trim() === "") {
+                animateError(message, messageError);
+                valid = false;
+            }
+
+            if (!valid) return; // Stop submission if validation fails
+
+            // Submit form data to Basin
+            try {
+                const response = await fetch(
+                    import.meta.env.PUBLIC_BASIN_FORM_URL,
+                    {
+                        method: "POST",
+                        body: formData,
+                    },
+                );
+
+                if (response.ok) {
+                    gsap.fromTo(
+                        successMessage,
+                        { opacity: 0, y: -10 },
+                        { opacity: 1, y: 0, duration: 0.5 },
+                    );
+                    successMessage.classList.remove("hidden");
+                    form.reset();
+                } else {
+                    gsap.fromTo(
+                        errorMessage,
+                        { opacity: 0, y: -10 },
+                        { opacity: 1, y: 0, duration: 0.5 },
+                    );
+                    errorMessage.classList.remove("hidden");
+                }
+            } catch (error) {
+                console.error("Form submission error:", error);
+                gsap.fromTo(
+                    errorMessage,
+                    { opacity: 0, y: -10 },
+                    { opacity: 1, y: 0, duration: 0.5 },
+                );
+                errorMessage.classList.remove("hidden");
+            }
+        });
+</script>
