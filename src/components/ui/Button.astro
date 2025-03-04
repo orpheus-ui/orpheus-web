@@ -1,9 +1,10 @@
 ---
 export interface Props {
     url: string;
-    target?;
+    target?: string;
     className?: string;
     secondary?: boolean;
+    title?: string;
 }
 const defaultText = "Button";
 const {
@@ -11,6 +12,7 @@ const {
     target = "_self",
     className,
     secondary = false,
+    title
 } = Astro.props as Props;
 ---
 
@@ -20,6 +22,7 @@ const {
             href={url}
             target={target}
             class={["btn-secondary group", className].filter(Boolean).join(" ")}
+            title={title}
         >
             <slot>{defaultText}</slot>
         </a>
@@ -28,6 +31,7 @@ const {
             href={url}
             target={target}
             class={["btn-primary group", className].filter(Boolean).join(" ")}
+            title={title}
         >
             <slot>{defaultText}</slot>
         </a>

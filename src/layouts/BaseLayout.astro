@@ -94,9 +94,11 @@ const { title, layoutType = "default", seoDescription, seoImage } = Astro.props;
 
         <script>
             import { initAllAnimations } from "../assets/js/animations.js";
+            import {handleLinkPreviews} from "../assets/js/linkPreview.js";
 
             window.addEventListener("load", () => {
                 initAllAnimations();
+                handleLinkPreviews();
             });
         </script>
     </body>
