@@ -1,16 +1,17 @@
 ---
 import Layout from "../layouts/Layout.astro";
-title: "About"
+import SectionTitle from "src/components/ui/SectionTitle.astro";
+title: "About";
 ---
 
 <Layout>
-    <div
-        class="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-hidden"
-    >
-        <div class="max-w-8xl mx-auto">
-            <div class="grid grid-cols-12 gap-6">
-                test
-            </div>
-        </div>
+    <div class="max-w-8xl mx-auto">
+        <article>
+            <h1 class="text-5xl text-center font-bold golden-text leading-snug">
+                Orpheus UI
+            </h1>
+            <span class="flex mx-auto divider-horizontal my-4"></span>
+            <slot />
+        </article>
     </div>
 </Layout>
