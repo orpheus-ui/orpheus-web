@@ -25,6 +25,14 @@ svg {
     pointer-events: none;
 }
 
+.bgHome {
+    opacity: 0;
+    transition: opacity 0.7s ease-out;
+}
+.bgHome.show {
+    opacity: 1;
+}
+
 .nav-link {
     @apply tracking-wide pb-2;
     background: linear-gradient(
@@ -81,7 +89,17 @@ svg {
         width: 100%;
     }
 }
+@property --gradient-pos-x {
+    syntax: "<percentage>";
+    initial-value: 0%;
+    inherits: false;
+}
 
+@property --gradient-pos-y {
+    syntax: "<percentage>";
+    initial-value: 0%;
+    inherits: false;
+}
 .btn-secondary {
     --gradient-pos-x: 0%;
     --gradient-pos-y: 0%;
@@ -117,6 +135,26 @@ svg {
     -webkit-mask-composite: destination-out;
     mask-composite: exclude;
     pointer-events: none;
+    animation: move-gradient 5.4s infinite linear;
+}
+@keyframes move-gradient {
+    0%,
+    100% {
+        --gradient-pos-x: 0%;
+        --gradient-pos-y: 0%;
+    }
+    37% {
+        --gradient-pos-x: 100%;
+        --gradient-pos-y: 0%;
+    }
+    50% {
+        --gradient-pos-x: 100%;
+        --gradient-pos-y: 100%;
+    }
+    87% {
+        --gradient-pos-x: 0%;
+        --gradient-pos-y: 100%;
+    }
 }
 .btn-secondary:hover {
     transform: scale(1.1);
