@@ -13,7 +13,7 @@ export const initSmoothScroll = () => {
   const lerp = (start, end, factor) => start * (1 - factor) + end * factor;
 
   const updateScroll = () => {
-    currentY = lerp(currentY, targetY, 0.12); // Adjust the 0.1 value to change smoothness
+    currentY = lerp(currentY, targetY, 0.05); // Adjust the 0.1 value to change smoothness
 
     if (Math.abs(targetY - currentY) > 1) {
       window.scrollTo(0, currentY);
@@ -32,8 +32,8 @@ export const initSmoothScroll = () => {
       0,
       Math.min(
         targetY + e.deltaY,
-        document.documentElement.scrollHeight - window.innerHeight
-      )
+        document.documentElement.scrollHeight - window.innerHeight,
+      ),
     );
 
     // Start animation if not already running
