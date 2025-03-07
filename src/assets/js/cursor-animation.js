@@ -4,6 +4,8 @@ export function initCursor() {
   const cursorFollower = document.querySelector(".cursor-follower");
   if (!cursorFollower) return; // Safety check if element doesn't exist
 
+  // TEST GitUI
+
   // Initial styles
   Object.assign(cursorFollower.style, {
     opacity: "0",
