@@ -1,6 +1,63 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+    --container-*: initial;
+    --container-8xl: 1440px;
+
+    --color-*: initial;
+    --color-transparent: transparent;
+    --color-dark: #050607;
+    --color-white: #eff3fb;
+
+    --color-zircon-50: #eff3fb;
+    --color-zircon-100: #e2e9f7;
+    --color-zircon-200: #ccd8f1;
+    --color-zircon-300: #a8bfe8;
+    --color-zircon-400: #7f9edb;
+    --color-zircon-500: #607fd1;
+    --color-zircon-600: #4d66c3;
+    --color-zircon-700: #4254b3;
+    --color-zircon-800: #3b4692;
+    --color-zircon-900: #343d74;
+    --color-zircon-950: #232848;
+
+    --color-red-50: #fef2f2;
+    --color-red-100: #ffe1e1;
+    --color-red-200: #ffc8c8;
+    --color-red-300: #ffa2a2;
+    --color-red-400: #fd6c6c;
+    --color-red-500: #f54242;
+    --color-red-600: #e22020;
+    --color-red-700: #be1717;
+    --color-red-800: #9d1717;
+    --color-red-900: #821a1a;
+    --color-red-950: #470808;
+
+    --color-gold-100: #ffe5a1;
+    --color-gold-200: #bf841a;
+    --color-gold-300: #ffcd74;
+
+    --font-default: Montserrat;
+    --font-cinzel: Cinzel;
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-gray-200, currentColor);
+    }
+}
 
 html {
     -webkit-font-smoothing: antialiased;
@@ -37,9 +94,9 @@ svg {
     @apply tracking-wide pb-2;
     background: linear-gradient(
         to right,
-        theme("colors.gold.100"),
-        theme("colors.gold.200"),
-        theme("colors.gold.300")
+        var(--color-gold-100),
+        var(--color-gold-200),
+        var(--color-gold-300)
     );
     background-size: 150% 150%;
     animation: rainbow 2s ease-in-out infinite;
@@ -72,9 +129,9 @@ svg {
     border-radius: 1px;
     background: linear-gradient(
         to left,
-        theme("colors.gold.100"),
-        theme("colors.gold.200"),
-        theme("colors.gold.300")
+        var(--color-gold-100),
+        var(--color-gold-200),
+        var(--color-gold-300)
     );
     animation: navBorder 250ms ease-in-out;
 }
@@ -104,7 +161,7 @@ svg {
     --gradient-pos-x: 0%;
     --gradient-pos-y: 0%;
 
-    @apply inline-flex items-center justify-center leading-none rounded-sm font-medium;
+    @apply inline-flex items-center justify-center leading-none rounded-xs font-medium;
     background: transparent;
     border: none;
     position: relative;
@@ -164,12 +221,12 @@ svg {
 }
 
 .btn-primary {
-    @apply inline-flex items-center justify-center text-dark leading-none rounded-sm font-medium;
+    @apply inline-flex items-center justify-center text-dark leading-none rounded-xs font-medium;
     background: linear-gradient(
         to top right,
-        theme("colors.gold.300"),
-        theme("colors.gold.200"),
-        theme("colors.gold.100")
+        var(--color-gold-300),
+        var(--color-gold-200),
+        var(--color-gold-100)
     );
     background-position: 0% 0%;
     transition:
@@ -214,7 +271,7 @@ svg {
 }
 
 .golden-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-tl from-gold-100 via-gold-200 to-gold-300;
+    @apply bg-clip-text text-transparent bg-linear-to-tl from-gold-100 via-gold-200 to-gold-300;
 }
 
 .golden-border {
@@ -240,7 +297,7 @@ svg {
 }
 
 .glide__slides > .glide__slide--active {
-    @apply opacity-100 blur-0;
+    @apply opacity-100 blur-none;
 }
 .glide__slides > div {
     @apply opacity-75;
@@ -320,5 +377,5 @@ svg {
     }
 }
 .input-style {
-    @apply p-4 rounded-sm bg-transparent border text-zircon-100 focus:outline-none hover:border-zircon-300/40 transition ease-out duration-300 focus:border-zircon-300/60 focus:ring-4 focus:ring-zircon-200/10 placeholder-zircon-300/50;
+    @apply p-4 rounded-xs bg-transparent border text-zircon-100 focus:outline-hidden hover:border-zircon-300/40 transition ease-out duration-300 focus:border-zircon-300/60 focus:ring-4 focus:ring-zircon-200/10 placeholder-zircon-300/50;
 }

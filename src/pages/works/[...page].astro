@@ -42,7 +42,7 @@ const { page, allCategories } = Astro.props as Props;
                 allCategories?.map((cat) => (
                     <a
                         href={`/works?category=${cat}`}
-                        class="px-4 py-2 rounded-full bg-dark/60 backdrop-blur-sm transition-all hover:bg-golden hover:text-black"
+                        class="px-4 py-2 rounded-full bg-dark/60 backdrop-blur-xs transition-all hover:bg-golden hover:text-black"
                     >
                         {cat}
                     </a>
@@ -101,7 +101,7 @@ const { page, allCategories } = Astro.props as Props;
                             Previous
                         </Button>
                     )}
-                    <span class="px-4 py-2 bg-dark/60 backdrop-blur-sm rounded-md">
+                    <span class="px-4 py-2 bg-dark/60 backdrop-blur-xs rounded-md">
                         Page {page.currentPage} of {page.lastPage}
                     </span>
                     {page.url.next && (
