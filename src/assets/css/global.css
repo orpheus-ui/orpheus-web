@@ -379,3 +379,52 @@ svg {
 .input-style {
     @apply p-4 rounded-xs bg-transparent border text-zircon-100 focus:outline-hidden hover:border-zircon-300/40 transition ease-out duration-300 focus:border-zircon-300/60 focus:ring-4 focus:ring-zircon-200/10 placeholder-zircon-300/50;
 }
+
+/* Blog Post Typography */
+.prose {
+    @apply max-w-none;
+}
+
+.prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+    @apply text-zircon-100 font-bold;
+}
+
+.prose h1 {
+    @apply text-4xl mb-8;
+}
+
+.prose h2 {
+    @apply text-3xl mb-6;
+}
+
+.prose h3 {
+    @apply text-2xl mb-4;
+}
+
+.prose p {
+    @apply text-zircon-100 mb-6 text-lg;
+}
+
+.prose a {
+    @apply text-gold-300 hover:text-gold-300 transition-colors duration-200;
+}
+
+.prose strong {
+    @apply text-zircon-100;
+}
+
+.prose ul, .prose ol {
+    @apply text-zircon-300 mb-6;
+}
+
+.prose code {
+    @apply text-zircon-100 bg-zircon-200/10 px-1.5 py-0.5 rounded;
+}
+
+.prose pre {
+    @apply bg-zircon-800/50 p-4 rounded-lg mb-6;
+}
+
+.prose blockquote {
+    @apply border-l-4 border-gold-300 pl-4 italic text-zircon-100;
+}

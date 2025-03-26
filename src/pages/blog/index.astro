@@ -1,0 +1,70 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import SectionTitle from "../../components/ui/SectionTitle.astro";
+import Socials from "../../components/Socials.astro";
+import { getCollection } from "astro:content";
+import type { Page } from 'astro';
+import type { CollectionEntry } from 'astro:content';
+
+import BlogGrid from "../../components/blog/BlogGrid.astro";
+import Pagination from "../../components/blog/Pagination.astro";
+import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
+
+const allPosts = await getCollection("blog");
+const sortedPosts = allPosts.sort(
+    (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+);
+
+const pageSize = 5;
+const currentPage = 1;
+const totalPages = Math.ceil(sortedPosts.length / pageSize);
+const paginatedPosts = sortedPosts.slice(0, pageSize);
+
+const page: Page<CollectionEntry<'blog'>> = {
+    data: paginatedPosts,
+    start: 0,
+    end: pageSize - 1,
+    total: sortedPosts.length,
+    currentPage: 1,
+    size: pageSize,
+    lastPage: totalPages,
+    url: {
+        current: '/blog',
+        prev: undefined,
+        next: totalPages > 1 ? '/blog/2' : undefined,
+        first: '/blog',
+        last: totalPages > 1 ? `/blog/${totalPages}` : '/blog'
+    }
+};
+
+const pageTitle = "Blog - Insights & Articles";
+---
+
+<Layout title={pageTitle}>
+    <section class="max-w-8xl px-6 lg:px-12">
+        <div class="space-y-12">
+            <Breadcrumbs 
+                items={[
+                    { label: "Blog", href: "/blog" }
+                ]}
+            />
+            <!-- Blog Header -->
+            <div class="space-y-6">
+                <SectionTitle title="Blog Posts" />
+                <p class="text-lg text-zircon-300">
+                    Thoughts, insights, and experiences about design and development.
+                </p>
+            </div>
+
+            <BlogGrid posts={page.data} />
+            
+            <Pagination 
+                currentPage={page.currentPage}
+                lastPage={page.lastPage}
+                prevUrl={page.url.prev}
+                nextUrl={page.url.next}
+            />
+        </div>
+        <Socials />
+    </section>
+</Layout>

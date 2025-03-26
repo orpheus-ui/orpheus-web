@@ -1,0 +1,51 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+    post: CollectionEntry<'blog'>;
+    featured?: boolean;
+}
+
+const { post, featured = false } = Astro.props;
+---
+
+<article class={`group ${featured ? 'w-full' : 'w-full md:w-[calc(50%-1rem)]'}`}>
+    <a href={`/blog/${post.slug}`} class="space-y-4 block">
+        {post.data.image && (
+            <div class="overflow-hidden rounded-lg">
+                <img
+                    src={post.data.image}
+                    alt={post.data.title}
+                    class={`w-full object-cover transform group-hover:scale-105 transition duration-300 ${
+                        featured ? 'h-[500px]' : 'h-64'
+                    }`}
+                />
+            </div>
+        )}
+        <div class="space-y-2">
+            <h2 class={`font-bold text-zircon-100 group-hover:text-gold-300 transition duration-300 ${
+                featured ? 'text-3xl md:text-4xl' : 'text-2xl'
+            }`}>
+                {post.data.title}
+            </h2>
+            <p class="text-sm text-zircon-400">
+                {post.data.publishDate.toLocaleDateString()}
+            </p>
+            <p class={`text-zircon-300 ${featured ? 'text-lg' : ''}`}>
+                {post.data.description}
+            </p>
+            {featured && post.data.tags && (
+                <div class="flex flex-wrap gap-2 pt-2">
+                    {post.data.tags.map(tag => (
+                        <a
+                            href={`/blog/tag/${tag}`}
+                            class="px-3 py-1 bg-zircon-600/10 hover:bg-zircon-600/20 text-zircon-200 rounded-full text-sm transition-colors duration-200"
+                        >
+                            {tag}
+                        </a>
+                    ))}
+                </div>
+            )}
+        </div>
+    </a>
+</article>

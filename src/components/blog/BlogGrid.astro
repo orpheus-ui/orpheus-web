@@ -1,0 +1,23 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BlogPost from './BlogPost.astro';
+
+interface Props {
+    posts: CollectionEntry<'blog'>[];
+}
+
+const { posts } = Astro.props;
+const [firstPost, ...otherPosts] = posts;
+---
+
+{firstPost && (
+    <div class="mb-16">
+        <BlogPost post={firstPost} featured={true} />
+    </div>
+)}
+
+<div class="flex flex-wrap gap-8">
+    {otherPosts.map(post => (
+        <BlogPost post={post} />
+    ))}
+</div>

@@ -1,0 +1,47 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import SectionTitle from "../../../components/ui/SectionTitle.astro";
+import BlogGrid from "../../../components/blog/BlogGrid.astro";
+import Socials from "../../../components/Socials.astro";
+import { getCollection } from "astro:content";
+import Breadcrumbs from "../../../components/ui/Breadcrumbs.astro";
+
+export async function getStaticPaths() {
+    const allPosts = await getCollection("blog");
+    const uniqueTags = [...new Set(allPosts.flatMap(post => post.data.tags || []))];
+
+    return uniqueTags.map(tag => ({
+        params: { tag },
+        props: {
+            posts: allPosts.filter(post => post.data.tags?.includes(tag))
+                .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
+        }
+    }));
+}
+
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+---
+
+<Layout title={`Blog Posts Tagged "${tag}"`}>
+    <section class="max-w-8xl px-6 lg:px-12">
+        <div class="space-y-12">
+            <Breadcrumbs 
+                items={[
+                    { label: "Blog", href: "/blog" },
+                    { label: "Tags", href: "/blog" },
+                    { label: tag }
+                ]}
+            />
+            <div class="space-y-6">
+                <SectionTitle title={`Posts Tagged "${tag}"`} />
+                <p class="text-lg text-zircon-300">
+                    Showing all posts tagged with "{tag}"
+                </p>
+            </div>
+
+            <BlogGrid posts={posts} />
+        </div>
+        <Socials />
+    </section>
+</Layout>
