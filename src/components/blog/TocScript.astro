@@ -1,0 +1,33 @@
+<script>
+    // Declare the type for our custom window property
+    declare global {
+        interface Window {
+            handleTocLinkClick?: (headingId: string) => void;
+        }
+    }
+
+    // Handle smooth scrolling for table of contents links
+    document.addEventListener('DOMContentLoaded', () => {
+        const tocLinks = document.querySelectorAll('.toc-link');
+        
+        tocLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                const headingId = link.getAttribute('data-heading-id');
+                
+                // Use the global method from smooth-scroll.js
+                if (window.handleTocLinkClick) {
+                    window.handleTocLinkClick(headingId);
+                } else {
+                    // Fallback if smooth scroll is not initialized
+                    const targetElement = document.getElementById(headingId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                        history.pushState(null, null, `#${headingId}`);
+                    }
+                }
+            });
+        });
+    });
+</script>
