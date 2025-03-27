@@ -1,0 +1,29 @@
+---
+interface Props {
+    title: string;
+    author?: string;
+    publishDate: Date;
+}
+
+const { title, author, publishDate } = Astro.props;
+
+const formattedDate = publishDate.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+});
+---
+
+<header class="space-y-6">
+    <h1 class="text-4xl md:text-5xl font-bold text-zircon-100">
+        {title}
+    </h1>
+    <div class="flex items-center space-x-4 text-zircon-400">
+        {author && (
+            <span>{author}</span>
+        )}
+        <time datetime={publishDate.toISOString()}>
+            {formattedDate}
+        </time>
+    </div>
+</header>

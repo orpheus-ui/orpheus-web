@@ -1,0 +1,35 @@
+---
+interface Props {
+    content: string;
+}
+
+const { content } = Astro.props;
+
+// Extract headings from content
+const headings = content.split('\n')
+    .filter(line => line.startsWith('## '))
+    .map(heading => {
+        const headingText = heading.replace('## ', '');
+        const headingId = headingText.toLowerCase().replace(/[^\w]+/g, '-');
+        return { text: headingText, id: headingId };
+    });
+---
+
+{headings.length > 0 && (
+    <div class="bg-zircon-800/30 border border-zircon-700/50 rounded-lg p-6">
+        <h2 class="text-xl font-bold text-zircon-100 mb-4">Table of Contents</h2>
+        <ul class="space-y-2">
+            {headings.map(heading => (
+                <li>
+                    <a 
+                        href={`#${heading.id}`} 
+                        class="text-gold-300 hover:text-gold-300/80 transition-colors toc-link"
+                        data-heading-id={heading.id}
+                    >
+                        {heading.text}
+                    </a>
+                </li>
+            ))}
+        </ul>
+    </div>
+)}

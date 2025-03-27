@@ -114,6 +114,45 @@ export function initCursor() {
     }
   });
 
+  // Handle Giscus comments section
+  const handleGiscusElements = () => {
+    // Target the giscus wrapper and any iframes within it
+    const giscusWrapper = document.querySelector('.giscus-wrapper');
+    if (!giscusWrapper) return;
+    
+    // Add event listener to the wrapper
+    giscusWrapper.addEventListener('mouseenter', () => {
+      Object.assign(cursorFollower.style, hiddenStyles);
+    });
+    
+    giscusWrapper.addEventListener('mouseleave', () => {
+      Object.assign(cursorFollower.style, normalStyles);
+    });
+    
+    // Also handle any iframes that might be dynamically added
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.addedNodes.length) {
+          const iframes = giscusWrapper.querySelectorAll('iframe');
+          iframes.forEach((iframe) => {
+            iframe.addEventListener('mouseenter', () => {
+              Object.assign(cursorFollower.style, hiddenStyles);
+            });
+          });
+        }
+      });
+    });
+    
+    observer.observe(giscusWrapper, { childList: true, subtree: true });
+  };
+  
+  // Initialize Giscus handling when DOM is fully loaded
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', handleGiscusElements);
+  } else {
+    handleGiscusElements();
+  }
+
   // Cleanup function
   return () => {
     if (animationFrame) {

@@ -1,0 +1,48 @@
+---
+import { string } from 'astro:schema';
+
+// Configuration for Giscus comments
+interface Props {
+    repo?: string;
+    repoId?: string;
+    category?: string;
+    categoryId?: string;
+    mapping?: "pathname" | "url" | "title" | "og:title" | "specific" | "number";
+    term?: string;
+    theme?: string;
+}
+
+const { 
+    repo = import.meta.env.PUBLIC_GISCUS_REPO || "raef/orpheus-web",
+    repoId = import.meta.env.PUBLIC_GISCUS_REPO_ID || "",
+    category = import.meta.env.PUBLIC_GISCUS_CATEGORY || "Blog Comments",
+    categoryId = import.meta.env.PUBLIC_GISCUS_CATEGORY_ID || "",
+    mapping = "pathname", // This ensures each blog post gets its own comments
+    term = "",
+    theme="preferred_color_scheme"
+} = Astro.props;
+---
+
+<section class="mt-12 pt-8 border-t border-zircon-700/50">
+    <h2 class="text-2xl font-bold text-zircon-100 mb-6">Comments</h2>
+    <div class="giscus-wrapper">
+        <script
+            src="https://giscus.app/client.js"
+            data-repo={repo}
+            data-repo-id={repoId}
+            data-category={category}
+            data-category-id={categoryId}
+            data-mapping={mapping}
+            data-term={term}
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="top"
+            data-theme={theme}
+            data-lang="en"
+            data-loading="lazy"
+            crossorigin="anonymous"
+            async
+        ></script>
+    </div>
+</section>
