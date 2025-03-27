@@ -30,4 +30,21 @@
             });
         });
     });
+
+    // Handle initial hash on page load
+    if (window.location.hash) {
+        const headingId = window.location.hash.substring(1);
+        
+        // Try to scroll to the element after a short delay
+        setTimeout(() => {
+            if (window.handleTocLinkClick) {
+                window.handleTocLinkClick(headingId);
+            } else {
+                const targetElement = document.getElementById(headingId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        }, 100);
+    }
 </script>
