@@ -26,7 +26,7 @@ export const initSmoothScroll = () => {
       return;
     }
 
-    currentY = lerp(currentY, targetY, 0.04); // Adjust the 0.1 value to change smoothness
+    currentY = lerp(currentY, targetY, 0.08); // Adjust the 0.1 value to change smoothness
 
     if (Math.abs(targetY - currentY) > 1) {
       window.scrollTo(0, currentY);
@@ -70,22 +70,23 @@ export const initSmoothScroll = () => {
 
     // Set the TOC link active flag
     isTocLinkActive = true;
-    
+
     // Calculate target position with offset
-    const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - 100;
-    
+    const targetPosition =
+      targetElement.getBoundingClientRect().top + window.scrollY - 100;
+
     // Smooth scroll to the heading
     smoothScrollToHeading(targetPosition, 800, () => {
       // Update URL hash without triggering scroll
       history.pushState(null, null, `#${headingId}`);
-      
+
       // Keep the position locked for a moment
       setTimeout(() => {
         // Update the target for the main scroll animation
         targetY = window.scrollY;
         currentY = window.scrollY;
         tocTargetY = null;
-        
+
         // Release the TOC lock after a delay
         setTimeout(() => {
           isTocLinkActive = false;
@@ -99,17 +100,18 @@ export const initSmoothScroll = () => {
     const startY = window.scrollY;
     const difference = targetPosition - startY;
     const startTime = performance.now();
-    
+
     function step(currentTime) {
       const elapsedTime = currentTime - startTime;
-      
+
       if (elapsedTime < duration) {
         // Easing function: easeInOutQuad
         const progress = elapsedTime / duration;
-        const easeProgress = progress < 0.5 
-          ? 2 * progress * progress 
-          : 1 - Math.pow(-2 * progress + 2, 2) / 2;
-        
+        const easeProgress =
+          progress < 0.5
+            ? 2 * progress * progress
+            : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+
         tocTargetY = startY + difference * easeProgress;
         window.scrollTo(0, tocTargetY);
         requestAnimationFrame(step);
@@ -119,7 +121,7 @@ export const initSmoothScroll = () => {
         if (callback) callback();
       }
     }
-    
+
     requestAnimationFrame(step);
   }
 
